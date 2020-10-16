@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="Crea proyectos es una blabla">
+    <!--Descripción del sitio-->
+    <meta name="keywords" content="Crea Proyectos,aviso,privacidad">
+    <!--Palabras clave-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <!--Conexión con hoja de estilos CSS-->
+    <link rel="icon" href="img/cropped-isotipo-32x32.png" type="img" sizes="16x16">
+    <!--Ícono del navegador-->
+    <title>Productos Crea Proyectos | ACO Environment</title>
+    <!--Título de la página-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!--JQuery para el efecto de loading-->
+</head>
+<body>
+    <div id="navbar-container">
+        <div id="navbar">
+            <div id="navbarLogo">
+                <a href="index.html"><img src="img/Logo con fondo azul como tarjeta.png" alt="Logo Crea Proyectos" width="100%"></a>
+            </div>
+            <div >
+                <div onclick="displayMenuMobile()" id="navbarMiniMenu">
+                    <img src="img/menu.svg" alt="menuMobile" width="100%">
+                </div>
+                <div id="navbarMenu">
+                    <a href="index.html" class="menuButton2">
+                        Inicio
+                    </a>
+                    <a href="conocenos.html" class="menuButton2">
+                        Conócenos
+                    </a>
+                    <a href="productos.html" id="menuButton1">
+                        Productos
+                    </a>
+                    <a href="noticias.html" class="menuButton2">
+                        Noticias
+                    </a>
+                    <a href="contacto.html" class="menuButton2">
+                        Contacto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <div id="productMainContainer1">
+        <div id="productDescriptionContainer1">
+            <div id="productTitle1">
+                PRODUCTOS
+            </div>
+            <div id="productName1">
+                <strong style="color: #1C4175;">ACO</strong> ENVIRONMENT
+            </div>
+            <div id="productDescriptionMain1">
+                <strong style="font-weight: bold;">Separadores de aceite/agua</strong> y soluciones para contención de derrames.
+            </div>
+        </div>
+        <div id="productMainImage1" style="background-image: url(img/Aco-environment-crea-proyectos.jpg); background-size: 60%;"></div>
+    </div>
+    <!-- Descripción producto general -->
+    <div id="productContainerItem2">
+        <div id="productSubcontainerItem2">
+            <div id="menuOptionDisplay2">
+                <div class="productMenuOption2" style="border-left: none;" onclick="oleoP()">
+                    Oleopator P
+                </div>
+                <div class="productMenuOption2" onclick="separa()">
+                    Separador de 2 cámaras
+                </div>
+                <!-- Cada uno de estos divs activan las funciones de action.js -->
+            </div>
+            <div id="displayProduct2">
+                <!-- En este div se colocarán los diferentes productos con la función de action.js -->
+                <div id="productTextContainer2">
+                    <div id="individualProductTitle2">
+                        ACO Oleopator P:
+                    </div>
+                    <div id="SText2">
+                        <strong style="font-weight: bold;">Es una gama de separadores de aceite/agua que permiten separar simultáneamente sedimentos y líquidos ligeros en un solo tanque</strong> y están diseñados para lograr un alto rendimiento a grandes caudales en un tanque compacto.
+                    </div>
+                </div>
+                <div id="productImageDisplay2">
+                    <img src="img/oleopatorP.png" alt="S2000" id="productImageWidth2">
+                </div>
+                <div id="standardMenu">
+                    <div id="standardMenuMain">
+                        Separadores de hidrocarburos
+                    </div>
+                    <a href="pdf/Environment/Oleopator/Oleopator NS3 670.pdf" target="_blank" class="standardMenuElements">
+                        <div class="standardAlignText">
+                            NS3 670&nbsp;&nbsp;
+                            <img src="img/pdf.svg" alt="menu icon" width="18%">
+                        </div>
+                    </a>
+                    <a href="pdf/Environment/Oleopator/Oleopator NS3 950.pdf" target="_blank" class="standardMenuElements">
+                        <div class="standardAlignText">
+                            NS3 950&nbsp;&nbsp;
+                            <img src="img/pdf.svg" alt="menu icon" width="18%">
+                        </div>
+                    </a>
+                    <a href="pdf/Environment/Oleopator/Oleopator NS6 660.pdf" target="_blank" class="standardMenuElements">
+                        <div class="standardAlignText">
+                            NS6 660&nbsp;&nbsp;
+                            <img src="img/pdf.svg" alt="menu icon" width="18%">
+                        </div>
+                    </a>
+                    <a href="pdf/Environment/Oleopator/Oleopator NS6 1210.pdf" target="_blank" class="standardMenuElements">
+                        <div class="standardAlignText">
+                            NS6 1210&nbsp;&nbsp;
+                            <img src="img/pdf.svg" alt="menu icon" width="18%">
+                        </div>
+                    </a>
+                </div>
+                <!-- En este div se colocarán los diferentes productos con la función de action.js -->
+            </div>
+        </div>
+    </div>
+    <!-- Descripción específica de producto -->
+    <div style="width: 100%; height: 112px;">
+        <div style="width: 100%; height: 50px; background-color: #2D2D2D; display: flex; align-items: center; justify-content: space-between;">
+            <div style="width: 100%; height: 20px; font-weight: bold; font-size: 15px; font-family: OpenSans-Regular; padding-left: 5%;">
+                <a href="avisoPrivacidad.html" style="text-decoration: none; color: #adadad;"> Aviso de privacidad</a>
+            </div>
+            <img src="img/Logo crea completo azul claro.png" alt="Logo Crea Proyectos" id="legalBarImage">
+        </div>
+        <div style="background-color: #0579C2; width: 100%; height: 1px;"></div>
+        <div style="background-color: #0B4479; width: 100%; height: 1px;"></div>
+        <div style="width: 100%; height: 60px; background-color: #171717; display: flex; align-items: center; justify-content: flex-start;">
+            <div id="legalBarText">
+                ©2017 CREA PROYECTOS - Todos los Derechos Reservados
+            </div>
+        </div>
+    </div>
+    <!-- Legal Bar -->
+    <div id="loader-wrapper">
+        <span id="loader">
+            <span id="loader-inner">
+            </span>
+        </span>
+    </div>
+    <script>
+        $(window).on("load", function(){
+            $("#loader-wrapper").fadeOut("slow");
+        });
+    </script>
+    <!-- Loading efect -->
+    <script type="text/javascript" src="javascript/action.js"></script>
+    <!-- CONEXIÓN CON DOCUMENTO DE EFECTOS JAVASCRIPT -->
+</body>
+</html>

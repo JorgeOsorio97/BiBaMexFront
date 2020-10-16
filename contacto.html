@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="Crea proyectos es una blabla">
+    <!--Descripción del sitio-->
+    <meta name="keywords" content="Crea Proyectos,aviso,privacidad">
+    <!--Palabras clave-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <!--Conexión con hoja de estilos CSS-->
+    <link rel="icon" href="img/cropped-isotipo-32x32.png" type="img" sizes="16x16">
+    <!--Ícono del navegador-->
+    <title>Crea Proyectos | Contacto</title>
+    <!--Título de la página-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!--JQuery para el efecto de loading-->
+</head>
+<body>
+    <div id="navbar-container">
+        <div id="navbar">
+            <div id="navbarLogo">
+                <a href="index.html"><img src="img/Logo con fondo azul como tarjeta.png" alt="Logo Crea Proyectos" width="100%"></a>
+            </div>
+            <div >
+                <div onclick="displayMenuMobile()" id="navbarMiniMenu">
+                    <img src="img/menu.svg" alt="menuMobile" width="100%">
+                </div>
+                <div id="navbarMenu">
+                    <a href="index.html" class="menuButton2">
+                        Inicio
+                    </a>
+                    <a href="conocenos.html" class="menuButton2">
+                        Conócenos
+                    </a>
+                    <a href="productos.html" class="menuButton2">
+                        Productos
+                    </a>
+                    <a href="noticias.html" class="menuButton2">
+                        Noticias
+                    </a>
+                    <a href="contacto.html" id="menuButton1">
+                        Contacto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <div id="contactContainer">
+        <div id="grayText1">
+            ¿INTERESADO EN NUESTROS SERVICIOS?
+        </div>
+        <div id="titleContact">
+            POR FAVOR CONTÁCTENOS:
+        </div>
+        <div id="emailPhone">
+            TELÉFONO: (55)-55-62-81-08 <br>
+            CORREO: info@creaproyectos.mx
+        </div>
+        <div id="grayText1">
+            SELECCIONE UNA OPCIÓN *
+        </div>
+        <form action="#" method="get" id="contact_data">
+            <!--Si dentro del parámetro action pongo el signo de # no mandará los datos a ningún lado pero como estoy usando 
+            el método get para mandar los datos, podré visualizar los datos mandados en la URL del navegador, esto se usa para 
+            hacer pruebas-->
+            <div id="formOfContact">
+                <label for="cotizacion">COTIZACIÓN: </label>
+                <input type="checkbox" id="cotizacion" name="cotizacion"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="servicio_al_cliente">SERVICIO AL CLIENTE: </label> 
+                <input type="checkbox" id="servicio_al_cliente" name="servicio_al_cliente"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="soporte_tecnico">SOPORTE TÉCNICO: </label> 
+                <input type="checkbox" id="soporte_tecnico" name="soporte_tecnico"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="solicitud_de_folletos">SOLICITUD DE FOLLETOS: </label> 
+                <input type="checkbox" id="solicitud_de_folletos" name="solicitud_de_folletos"/> <br><br>
+                <!--Como en el checkbox se pueden seleccionar varias opciones, se debe dar un name diferente a cada checkbox y 
+                cuando lo seleccione el usuario, el value que tomará será on, si no lo selecciona el value será off-->
+            </div>
+            <div style="width: 100%; height: 50px; font-family: OpenSansCondensed; font-size: 25px; color: #797979; display: flex; justify-content: center; align-items: center;">
+                INTRODUZCA SUS DATOS *
+            </div>
+            <p style="height: 50px; font-family: OpenSansCondensed; display: flex; align-items: center; border-bottom: #e2e2e2 solid 1px;">
+                <input type="text" id="nombre" name="nombre" placeholder="NOMBRE *" style="width: 100%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; border: none; letter-spacing: 4px; padding-left: 2%;">
+            </p>
+            <p style="height: 50px; font-family: OpenSansCondensed; display: flex; align-items: center; border-bottom: #e2e2e2 solid 1px;">
+                <input type="email" id="email" name="email" placeholder="E-MAIL *" style="width: 100%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; color: #222222; border: none; letter-spacing: 4px; padding-left: 2%;">
+            </p>
+            <p style="height: 50px; font-family: OpenSansCondensed; display: flex; align-items: center; border-bottom: #e2e2e2 solid 1px;">
+                <label for="telefono_numero" style="font-family: OpenSansCondensed; font-size: 18px; color: #222222; letter-spacing: 4px; padding-left: 2%;">TELÉFONO: </label>
+                <input type="number" id="telefono_lada" name="telefono_lada" placeholder="LADA *" style="width: 50%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; color: #222222; border: none; letter-spacing: 4px; padding-left: 2%;">
+                <input type="number" id="telefono_numero" name="telefono_numero" placeholder="NÚMERO *" style="width: 50%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; color: #222222; border: none; letter-spacing: 4px; padding-left: 2%;">
+            </p>
+            <p style="height: 160px; font-family: OpenSansCondensed; display: flex; align-items: flex-start; margin-top: 50px;">
+                <label for="mensaje" style="font-family: OpenSansCondensed; font-size: 18px; color: #222222; letter-spacing: 4px; padding-left: 2%;">MENSAJE: </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <textarea name="mensaje" id="mensaje" style="width: 100%; height: 150px; font-size: 15px; font-family: OpenSansCondensed;" form="contact_data"></textarea>
+            </p>
+            <p style="height: 50px; font-family: OpenSansCondensed; display: flex; align-items: center; justify-content: center; margin-top: 40px;">
+                <input type="submit" id="mandar_datos" name="mandar_datos" value="ENVIAR" style="width: 50%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; border: none; letter-spacing: 4px;">
+            </p>
+        </form>
+    </div>
+    <!-- Inputs contacto -->
+    <div style="width: 100%; height: 112px;">
+        <div style="width: 100%; height: 50px; background-color: #2D2D2D; display: flex; align-items: center; justify-content: space-between;">
+            <div style="width: 100%; height: 20px; font-weight: bold; font-size: 15px; font-family: OpenSans-Regular; padding-left: 5%;">
+                <a href="avisoPrivacidad.html" style="text-decoration: none; color: #adadad;"> Aviso de privacidad</a>
+            </div>
+            <img src="img/Logo crea completo azul claro.png" alt="Logo Crea Proyectos" id="legalBarImage">
+        </div>
+        <div style="background-color: #0579C2; width: 100%; height: 1px;"></div>
+        <div style="background-color: #0B4479; width: 100%; height: 1px;"></div>
+        <div style="width: 100%; height: 60px; background-color: #171717; display: flex; align-items: center; justify-content: flex-start;">
+            <div id="legalBarText">
+                ©2017 CREA PROYECTOS - Todos los Derechos Reservados
+            </div>
+        </div>
+    </div>
+    <!-- Legal Bar -->
+    <div id="loader-wrapper">
+        <span id="loader">
+            <span id="loader-inner">
+            </span>
+        </span>
+    </div>
+    <script>
+        $(window).on("load", function(){
+            $("#loader-wrapper").fadeOut("slow");
+        });
+    </script>
+    <!-- Loading efect -->
+    <script type="text/javascript" src="javascript/action.js"></script>
+    <!-- CONEXIÓN CON DOCUMENTO DE EFECTOS JAVASCRIPT -->
+</body>
+</html>
