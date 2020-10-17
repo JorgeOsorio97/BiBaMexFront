@@ -5,15 +5,31 @@
   padding-bottom: 50px;
 }
 
+<<<<<<< HEAD
 .content {
   box-sizing: content-box;
   width: 100%; 
   height: 61vh;
   position: relative;
   align-items: left; 
+=======
+.content-box {
+  box-sizing: border-box; 
+  width: 1000px;
+  align-items: right;
+
+>>>>>>> 37d1b8c479614f690a672e33bcff1956d391da6e
 }
 
-
+.searcher{
+  border-style:hidden;
+  height: 35px;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  width: 300px;
+  outline-style: none;
+  /*Esto es para que no salga ese pequeño margen del input cuando le doy click*/;
+}
 
 
 
@@ -530,6 +546,22 @@ productos*/
         #ffc75f7c,
         #f9f9717e
     );
+}
+
+:root{
+  /*Puedo declarar una variable que guarde muchos colores poniendo la palabra reservada linear-gradient, la orientación
+  que tendrá el gradiente y los colores que la conformarán separados por comas, todo dentro de su paréntesis*/
+  --gradienteNaranRojo: linear-gradient(
+      45deg,
+      #941026,
+      #b1152f,
+      #E02342,
+      #da3e58,
+      #dd5341,
+      #ff9671,
+      #ffc75f,
+      #f9f871
+  );
 }
 
 @keyframes efectoColorFondo{
@@ -1220,7 +1252,8 @@ productos*/
   letter-spacing: 1px; 
   line-height: 80px; 
   color: #0579C2; 
-  padding-left: 5%;
+  padding-left: 15%;
+  margin-bottom: 20px;
 }
 
 #productDescriptionMain1{ 
@@ -1446,6 +1479,8 @@ productos*/
 }
 
 #productMenuOption1{
+  text-align: center;
+  padding: 5px;
   width: 90vw;
   height: 11vh;
   border-left: solid #d3d2d2 1px; 
@@ -1481,20 +1516,49 @@ productos*/
 }
 
 #productTextContainer1{ 
-  width: 25vw; 
-  height: 50vh;
+  width: 40%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: whitesmoke;
 }
 
 #individualProductTitle1{
   width: 100%; 
   height: 80px; 
   font-family: OpenSansCondensed; 
-  font-size: 35px; 
+  font-size: 35px;
+  margin-bottom: 10px;
   color: #222222;
   letter-spacing: 6px; 
   display: flex; 
   align-items: center; 
   font-weight: bold;
+}
+
+.mathButton{
+  background-color: #FF9C27; 
+  width: 60px; 
+  height: 60px; 
+  border-radius: 100%; 
+  display: flex; 
+  justify-content: 
+  center; align-items: 
+  center; font-family: 
+  OpenSansCondensed; 
+  font-size: 50px; 
+  color: #222222; 
+  margin: 10px; 
+  font-weight: bold;
+}
+.mathButton:hover{
+  color: white;
+  background-image: linear-gradient(to bottom, #000000, #1f1f1f);
+  transition: all 0.2s ease;
+  transition-delay: 0.1s;
+  cursor: pointer;
 }
 
 #SText1{
@@ -1521,8 +1585,9 @@ productos*/
 }
 
 #standardMenu1{
-  width: 20vw;
-  height: 50vh;
+  width: 55%;
+  background-color: whitesmoke;
+  height: 60vh;
   display: flex; 
   flex-direction: column;
   align-items: center; 
@@ -1537,7 +1602,7 @@ productos*/
 }
 
 #standardMenuMain1{
-  background-image: linear-gradient(to bottom, #f3f2f2, #cfcece); 
+  background-image: linear-gradient(to bottom, #f3f2f2, #cfcece);
   width: 88%; 
   padding: 1%;
   height: 6vh;
@@ -1555,7 +1620,8 @@ productos*/
   color: #222222;
   height: 7vh;
   font-family: OpenSansCondensed; 
-  font-size: 18px; 
+  font-size: 18px;
+  letter-spacing: 4px;
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
@@ -3186,19 +3252,55 @@ label{
 }
   
 input{
-  background-color: #F9F9F9;
+  background-color: white;
 }
   
 input:focus{
   box-shadow: 0px 10px 15px #e2e2e2;
   border: solid 1px #e2e2e2;
+  background-color: white;
 }
  
 input[type=submit]{
+  text-align: center;
   border: #222222 solid 1px;
   color: white;
   text-decoration: none;
   background-color: #222222;
+  cursor: pointer;
+}
+
+input[type=text]{
+  text-align: center;
+  border: #222222 solid 1px;
+  color: #222222;
+  text-decoration: none;
+  background-color: white;
+}
+
+.botonFun2{
+  width: 90%;
+  height: 40px;
+  border: solid 2px salmon;
+  font-family: OpenSansCondensed;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  letter-spacing: 4px;
+  /*Aquí mandaré a llamar mi variable tipo gradiente de colores, esto lo debo hacer usando la instrucción 
+  background-image así como lo tenía que hacer cuando usaba la instrucción linear-gradient normal*/
+  background-image: var(--gradienteNaranRojo);/*Como estoy usando una variable debo usar la instrucción var(--nombreVar)*/
+  /*Las background-image no pueden ser manejadas con transision y no pueden cambiar lentamente tampoco, pero lo que 
+  si puede ser manejado es la posición, por eso si agrando la imagen de fondo con background-size y luego pongo 
+  background-position para indicar su posición inicial, esto podrá ser cambiado lentamente si le aplico un transition 
+  a la propiedad background-position y parecerá como si estuviera un efecto de gradiente en el botón aunque no es así*/
+  background-size: 300%;/*Agrando muchísimo la background image*/
+  background-position: left;/*Le doy una posición inicial*/
+  transition: background-position 0.5s ease-in-out;/*A la posición si le puedo aplicar un transition*/
+}
+.botonFun2:hover{
+  /*El transition simplemente moverá el fondo de lugar haciendo que parezca como si fuera un efecto con el gradiente*/
+  background-position: right;
 }
 
 /*Diseño responsivo:
@@ -3332,28 +3434,28 @@ Las media queries se deben poner siempre después del id o class al que se está
     height: 15vh;
   }
   #productContainerItem1{
-    height: 95vh;
+    height: 150vh;
   }
   #productSubcontainerItem1{
-    height: 86vh;
+    height: 140vh;
   }
   #productTextContainer1{
     width: 90%;
-    height: 34vh;
+    height: 60vh;
   }
   #productImageWidth1{
     width: 80%;
   }
   #standardMenu1{
-    height: 30vh;
-    width: 25vw;
+    height: 50vh;
+    width: 90%;
   }
   #productImageDisplay1{
     width: 30vw;
     height: 30vh;
   }
   #displayProduct1{
-    height: 73vh;
+    height: 120vh;
     flex-wrap: wrap;
   }
   #SText1{
@@ -4064,7 +4166,7 @@ Las media queries se deben poner siempre después del id o class al que se está
     background-size: 80%;
   }
   #productContainerItem1{
-    height: 100vh;
+    height: 140vh;
   }
   #displayProduct1{
     height: 77vh;
