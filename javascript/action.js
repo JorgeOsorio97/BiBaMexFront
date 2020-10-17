@@ -29,7 +29,8 @@
 console.log(d3);
 console.log(topojson);
 */
-    let statesURL = 'javascript/mx_tj.json';
+
+    let statesURL = 'https://gist.githubusercontent.com/leenoah1/535b386ec5f5abdb2142258af395c388/raw/a045778d28609abc036f95702d6a44045ae7ca99/geo-data.json';
     console.log(statesURL);
     let backendHackathon2020URL = "";
 
@@ -39,19 +40,39 @@ console.log(topojson);
     let canvas = d3.select('#canvas');//Esto se usa para seleccionar el elemento que tenga el id canvas
 
     let drawmap = () => { //Con esta arrow function vamos a dibujar el mapa
-
+        
     }
     
     d3.json(statesURL).then( //Esto es una promesa que se usa para importar los datos de la url que yo le diga
         (data, error) =>{ //Esto sirve para que tome la data de la URL que le dí y el posible error
             if(error){
-                console.log(error);
+                console.log(log);
             }else{
-                stateData = data; //Guardo en la variable stateData que cree arriba el contenido de la URL
+                //Guardo en la variable stateData que cree arriba el contenido de la URL
+                /*Usamos el método topojson.feature() para convertir objetos topojson en objetos geojson que son los 
+                que puede leer la librería d3.js, a este le debo dar 2 parámetros:
+                    1.- data, que es el objeto topojson
+                    2.- la información clave que queremos obtener del json*/
+                stateData = topojson.feature(data, data.objects.MEX_adm1).features;
+                //Del objeto geojson solo nos importa la parte de features y no el resto del array
+                
                 console.log(stateData); //con esto puedo ver lo que hay en el topojson que llegó a la variable statesURL
+                
+                /*Aquí vamos a jalar lo que haya en el URL que me manden, para ello debo asegurarme que solo se 
+                haga cuando no exista un error en la llamada inicial, por eso lo pongo dentro del else*/
+                // d3.json(backendHackathon2020URL).then( 
+                //     (data, error) => {
+                //         if(error){
+                //             console.log(error);
+                //         }else{
+                //             backendHackathon2020Data = data;
+                //             console.log(backendHackathon2020Data);
+                //         }
+                //     }
+                // )
             }
         }
-    ) 
+    );
 //TERMINA COROPLETH MAP
 
 function displayMenuMobile(){ 
