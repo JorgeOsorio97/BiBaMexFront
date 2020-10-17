@@ -1,3 +1,34 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function displayMenuMobile(){ 
     var click = document.getElementById("navbarMenu").style.display;
     if(click == "none"){
