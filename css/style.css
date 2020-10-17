@@ -1,15 +1,24 @@
-.grid-container {
+.grid {
   display: grid;
-  grid-auto-flow: column;
-  width: 800px;
-  grid-template: repeat(4, 2fr) / repeat(2, 2fr);
+  grid-area: initial;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  padding-bottom: 50px;
 }
 
+<<<<<<< HEAD
+.content {
+  box-sizing: content-box;
+  width: 100%; 
+  height: 61vh;
+  position: relative;
+  align-items: left; 
+=======
 .content-box {
   box-sizing: border-box; 
   width: 1000px;
   align-items: right;
 
+>>>>>>> 37d1b8c479614f690a672e33bcff1956d391da6e
 }
 
 .searcher{
@@ -21,7 +30,6 @@
   outline-style: none;
   /*Esto es para que no salga ese pequeño margen del input cuando le doy click*/;
 }
-
 
 
 

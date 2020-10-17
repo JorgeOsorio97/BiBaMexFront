@@ -19,7 +19,205 @@
     <!-- Required meta tags -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <!-- Graficos -->
+     <script>
+        var contenido = document.querySelector('#contenido')
+        var datos2 = Array()
+        
+        function traer(){
+            fetch('https://mindicador.cl/api/dolar')
+            .then(res=> res.json())
+            .then(datos =>{
+            tabla(datos)
+            })
+        }  
 
+        function tabla(datos){
+            var prueba = new Array(datos.serie.length)
+
+            for(var j=0; j < datos.serie.length; j++)
+            {
+                var i = datos.serie
+                prueba[j] = [[`${i[j].fecha}`, Number.parseFloat(`${i[j].valor}`)]];            
+            }
+            
+            datos2=prueba
+        } 
+        
+        function graficar()
+        {
+            //librerias para barras. 
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawStuff);
+
+            //grafica barras
+            function drawStuff() {
+
+                //console.log(Number.parseFloat(datos2[1][0][1]))
+
+                var data = new google.visualization.DataTable();
+                //tipo de dato, y el dato
+                data.addColumn('string', 'fecha');
+                data.addColumn('number', 'valor');
+
+                for(let i =0; i < datos2.length; i++)
+                {
+                data.addRow([datos2[i][0][0], datos2[i][0][1]]);
+                }
+
+            var options = {
+                colors: ['#95C0DE'],
+                legend: { position: 'none' },
+                chart: {
+                title: 'Dolar',
+                subtitle: 'Cambio del dolar mensual' },
+                axes: {
+                x: {
+                    0: { side: 'bottom', label: 'fecha'} // Top x-axis.
+                }
+                },
+                bar: { groupWidth: "70%" }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+            // Convert the Classic options to Material options.
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+            };
+        }
+
+            
+        function graficar2()
+        {
+            //librerias para lineas.
+            google.charts.load('current', {'packages':['line']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            //grafica de linea  
+            function drawChart()
+            {
+
+            var data2 = new google.visualization.DataTable();
+            data2.addColumn('string', 'fecha');
+            data2.addColumn('number', 'valor');
+            data2.addColumn('number', 'constante');
+
+            for(let i =0; i < datos2.length; i++)
+                    {
+                    data2.addRow([datos2[i][0][0],datos2[i][0][1],780]);
+                    }
+
+            var options2 = 
+            {
+                chart: 
+                {
+                title: 'Box Office Earnings in First Two Weeks of Opening',
+                subtitle: 'in millions of dollars (USD)'
+                },
+                
+                axes: 
+                {
+                x: 
+                {
+                    0: {side: 'bottom'}
+                }
+                }
+            };
+
+            var chart = new google.charts.Line(document.getElementById('line_top_x'));
+            chart.draw(data2, google.charts.Line.convertOptions(options2));
+        }
+        }
+
+        function graficar3()
+        {
+        //librerias para barras con linea. 
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawVisualization);
+
+        function drawVisualization() 
+        {
+            var data3 = new google.visualization.DataTable();
+            data3.addColumn('string', 'fecha');
+            data3.addColumn('number', 'valor');
+            data3.addColumn('number', 'constante');
+            data3.addColumn('number', 'constante');
+            data3.addColumn('number', 'constante');
+
+
+            for(let i =0; i < datos2.length; i++)
+                    {
+                    data3.addRow([datos2[i][0][0],datos2[i][0][1],780, 500, 200]);
+                    }
+
+            var options3 = {
+            title : 'Monthly Coffee Production by Country',
+            vAxis: {title: 'Cups'},
+            hAxis: {title: 'Month'},
+            seriesType: 'bars',
+            series: {1: {type: 'line'}, 2: {type: 'line'}},
+
+         
+            };
+
+
+            var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+            chart.draw(data3, options3);
+        }
+        }
+        
+        function graficar4()
+        {
+        //librerias para areas
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() 
+        {
+            var data4 = new google.visualization.DataTable();
+            data4.addColumn('string', 'fecha');
+            data4.addColumn('number', 'valor');
+            data4.addColumn('number', 'constante');
+
+            for(let i =0; i < datos2.length; i++)
+                    {
+                    data4.addRow([datos2[i][0][0],datos2[i][0][1],580]);
+                    }
+
+            var options4 = 
+            {
+            title: 'Company Performance',
+            hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+            vAxis: {minValue: 0}
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div2'));
+            chart.draw(data4, options4);
+        }
+        }
+
+        function graficar5()
+        {
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data5 = new google.visualization.DataTable();
+                data5.addColumn('string', 'fecha');
+                data5.addColumn('number', 'valor');
+
+                for(let i =0; i < datos2.length; i++)
+                        {
+                        data5.addRow([datos2[i][0][0],datos2[i][0][1]]);
+                        }        
+
+                var options5 = {
+                title: 'My Daily Activities'
+                };
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                chart.draw(data5, options5);
+            }
+        }
+    </script>
 </head>
 <body>
     <div id="navbar-container">
@@ -38,29 +236,23 @@
                     <a href="calculadoraGraficadora.html" class="menuButton2">
                         Calculadora/Graficadora
                     </a>
-                    <a href="heatmap.html" class="menuButton2">
+                    <a href="heatmap.html" id="menuButton2">
                         Heatmap
                     </a>
-                    <a href="noticias.html" id="menuButton1">
-                        Noticias
+                    <a href="noticias.html" class="menuButton1">
+                        Gráficas
                     </a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Navbar -->
-
-    <div style="width: 100%; height: 112px;">
-        <div style="width: 100%; height: 80px; background-color: #2D2D2D; display: flex; align-items: center; justify-content: flex-end;">
-            <img src="img/LOGO_BLANCO_Alargado.png" alt="Logo Crea Proyectos" id="legalBarImage">
-        </div>
-        <div style="background-color: #0579C2; width: 100%; height: 1px;"></div>
-        <div style="background-color: #0B4479; width: 100%; height: 1px;"></div>
-
+    <div >
         <!-- Checkbox de graficas CHECAR CON BACKEND-->
         <div class="container my-5 text-center">
             <button classs="btn btn-danger w-100" onclick="traer()">obtener</button>
         </div>
+        
         <form>
             <div class="container my-5 text-center">
                 <!--Como en el checkbox se pueden seleccionar varias opciones, se debe
@@ -81,6 +273,7 @@
                 <input type="radio" name="grafica" onclick="graficar5()"/>
                 <label for="barras">Gráfica de pie</label>
             </div>
+            
             <div class="container my-5 text-center">
                 <select class="" name="ciudades">
                     <!--Select me sirve para hacer una lista de opciones multiples, cada
@@ -93,264 +286,59 @@
                       <option value="DATO4">DATO #4</option>
                     </select>
               
-                    <select class="" name="">
-                      <option value=""></option>
-                    </select>
-                    <!--El value es para poner nombres mas sencillos de entender para la
-                    maquina que el nombre tal cual de la opcion que tiene acentos, etc.
-                    los cuales se encuentran dentro de la etiqueta y son los que apareceran
-                    en pantalla para que sea mas entendible para el usuario-->
-              
                     <input type="submit"/>
                     <!--Se debe poner un input de submit para que me envie los resultados
                     estos saldran en el url-->
-
             </div>
-
         </form>
-        
 
-        <!-- Graficos -->
-        <script>
-            var contenido = document.querySelector('#contenido')
-            var datos2 = Array()
-            function traer(){
-                fetch('https://mindicador.cl/api/dolar')
-                .then(res=> res.json())
-                .then(datos =>{
-                tabla(datos)
-                })
-            }  
-
-            function tabla(datos){
-                var prueba = new Array(datos.serie.length)
-
-                for(var j=0; j < datos.serie.length; j++)
-                {
-                    var i = datos.serie
-                    prueba[j] = [[`${i[j].fecha}`, Number.parseFloat(`${i[j].valor}`)]];            
-                }
-                
-                datos2=prueba
-            } 
-            
-            function graficar()
-            {
-                //librerias para barras. 
-                google.charts.load('current', {'packages':['bar']});
-                google.charts.setOnLoadCallback(drawStuff);
-
-                //grafica barras
-                function drawStuff() {
-
-                    //console.log(Number.parseFloat(datos2[1][0][1]))
-
-                    var data = new google.visualization.DataTable();
-                    //tipo de dato, y el dato
-                    data.addColumn('string', 'fecha');
-                    data.addColumn('number', 'valor');
-
-                    for(let i =0; i < datos2.length; i++)
-                    {
-                    data.addRow([datos2[i][0][0], datos2[i][0][1]]);
-                    }
-
-                var options = {
-                    width: 800,
-                    colors: ['#95C0DE'],
-                    legend: { position: 'none' },
-                    chart: {
-                    title: 'Dolar',
-                    subtitle: 'Cambio del dolar mensual' },
-                    axes: {
-                    x: {
-                        0: { side: 'bottom', label: 'fecha'} // Top x-axis.
-                    }
-                    },
-                    bar: { groupWidth: "70%" }
-                };
-
-                var chart = new google.charts.Bar(document.getElementById('top_x_div'));
-                // Convert the Classic options to Material options.
-                chart.draw(data, google.charts.Bar.convertOptions(options));
-                };
-            }
-
-                
-            function graficar2()
-            {
-                //librerias para lineas.
-                google.charts.load('current', {'packages':['line']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                //grafica de linea  
-                function drawChart()
-                {
-
-                var data2 = new google.visualization.DataTable();
-                data2.addColumn('string', 'fecha');
-                data2.addColumn('number', 'valor');
-                data2.addColumn('number', 'constante');
-
-                for(let i =0; i < datos2.length; i++)
-                        {
-                        data2.addRow([datos2[i][0][0],datos2[i][0][1],780]);
-                        }
-
-                var options2 = 
-                {
-                    chart: 
-                    {
-                    title: 'Box Office Earnings in First Two Weeks of Opening',
-                    subtitle: 'in millions of dollars (USD)'
-                    },
-                    width: 900,
-                    height: 500,
-                    axes: 
-                    {
-                    x: 
-                    {
-                        0: {side: 'bottom'}
-                    }
-                    }
-                };
-
-                var chart = new google.charts.Line(document.getElementById('line_top_x'));
-                chart.draw(data2, google.charts.Line.convertOptions(options2));
-            }
-            }
-
-            function graficar3()
-            {
-            //librerias para barras con linea. 
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawVisualization);
-
-            function drawVisualization() 
-            {
-                var data3 = new google.visualization.DataTable();
-                data3.addColumn('string', 'fecha');
-                data3.addColumn('number', 'valor');
-                data3.addColumn('number', 'constante');
-
-                for(let i =0; i < datos2.length; i++)
-                        {
-                        data3.addRow([datos2[i][0][0],datos2[i][0][1],780]);
-                        }
-
-                var options3 = {
-                title : 'Monthly Coffee Production by Country',
-                vAxis: {title: 'Cups'},
-                hAxis: {title: 'Month'},
-                seriesType: 'bars',
-                series: {1: {type: 'line'}}
-                };
-
-                var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-                chart.draw(data3, options3);
-            }
-            }
-            
-            function graficar4()
-            {
-            //librerias para areas
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() 
-            {
-                var data4 = new google.visualization.DataTable();
-                data4.addColumn('string', 'fecha');
-                data4.addColumn('number', 'valor');
-                data4.addColumn('number', 'constante');
-
-                for(let i =0; i < datos2.length; i++)
-                        {
-                        data4.addRow([datos2[i][0][0],datos2[i][0][1],580]);
-                        }
-
-                var options4 = 
-                {
-                title: 'Company Performance',
-                hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-                vAxis: {minValue: 0}
-                };
-
-                var chart = new google.visualization.AreaChart(document.getElementById('chart_div2'));
-                chart.draw(data4, options4);
-            }
-            }
-
-            function graficar5()
-            {
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-                var data5 = new google.visualization.DataTable();
-                    data5.addColumn('string', 'fecha');
-                    data5.addColumn('number', 'valor');
-
-                    for(let i =0; i < datos2.length; i++)
-                            {
-                            data5.addRow([datos2[i][0][0],datos2[i][0][1]]);
-                            }        
-
-                    var options5 = {
-                    title: 'My Daily Activities'
-                    };
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                    chart.draw(data5, options5);
-                }
-            }
-        </script>
-        <div class="content-box">
-            <div class="grid-container">
-                <!--grafica de barras-->
-                <div id="top_x_div" style="width: 900px; height: 500px;"></div>
-                <!--grafica de lineas-->
-                <div id="line_top_x" style="width: 900px; height: 500px;"></div>
-                <!--grafica de barras con lineas-->
-                <div id="chart_div" style="width: 900px; height: 500px;"></div>
-                <!--grafica de area-->
-                <div  id="chart_div2" style="width: 900px; height: 500px;"></div>
-                <!--grafica de pie-->
-                <div  id="piechart" style="width: 900px; height: 500px;"></div>
+        <div class="grid" >
+            <!--grafica de barras-->
+            <div class="content" id="top_x_div"  ></div>
+            <!--grafica de lineas-->
+            <div class="content" id="line_top_x"></div>
+            <!--grafica de barras con lineas-->
+            <div class="content" id="chart_div"></div>
+            <!-- grafica de area-->    
+            <div class="content" id="chart_div2" ></div>
+            <!-- grafica pie-->     
+            <div class="content" id="piechart"></div>
+       
             </div>
         </div>
-        
 
+    </div>
+
+   
+        
+    <div style="width: 100%; height: 112px;">
+        <div style="width: 100%; height: 80px; background-color: #2D2D2D; display: flex; align-items: center; justify-content: flex-end;">
+            <img src="img/LOGO_BLANCO_Alargado.png" alt="Logo Crea Proyectos" id="legalBarImage">
+        </div>
+
+        <div style="background-color: #0579C2; width: 100%; height: 1px;"></div>
+        <div style="background-color: #0B4479; width: 100%; height: 1px;"></div>
         <div style="width: 100%; height: 60px; background-color: #171717; display: flex; align-items: center; justify-content: flex-start;">
             <div id="legalBarText">
                 ©HACKATHON BBVA 2020 - {stay: ['home','inspired','coding']}
             </div>
         </div>
     </div>
-    
-    
-    
     <!-- Legal Bar -->
     <div id="loader-wrapper">
         <span id="loader">
-            <span id="loader-inner">
-            </span>
+            <span id="loader-inner"></span>
         </span>
     </div>
-
     <script>
         $(window).on("load", function(){
             $("#loader-wrapper").fadeOut("slow");
         });
     </script>
     <!-- Loading efect -->
+    <script type="text/javascript" src="javascript/mexico_map.js"></script>
+    <!-- CONEXIÓN CON DOCUMENTO DE EFECTOS JAVASCRIPT -->
     <script type="text/javascript" src="javascript/action.js"></script>
     <!-- CONEXIÓN CON DOCUMENTO DE EFECTOS JAVASCRIPT -->
-    
-    
-
-
-    
-
-
 </body>
 </html>
