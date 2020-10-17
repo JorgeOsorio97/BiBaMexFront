@@ -5,20 +5,18 @@
   padding-bottom: 50px;
 }
 
-<<<<<<< HEAD
 .content {
   box-sizing: content-box;
   width: 100%; 
   height: 61vh;
   position: relative;
   align-items: left; 
-=======
+}
 .content-box {
   box-sizing: border-box; 
   width: 1000px;
   align-items: right;
 
->>>>>>> 37d1b8c479614f690a672e33bcff1956d391da6e
 }
 
 .searcher{
