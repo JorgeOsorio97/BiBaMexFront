@@ -72,6 +72,19 @@ body{
     padding: 0px;
 }
 
+svg{
+  background-color: #122d30;
+  margin: 50px;
+  border: solid 1px white;
+  height: 600px;
+  width: 80%;
+}
+
+#canvas{
+  min-width: 900px;
+  min-height: 500px;
+}
+
 #loader-wrapper{
   width: 100%;
   height: 100%;
@@ -145,6 +158,7 @@ body{
   position: sticky;
   top: 0px;
   z-index: 3;
+  box-shadow: 0px 1px 20px #363636;
 }
 
 #navbar{
@@ -160,8 +174,8 @@ body{
 
 #navbarLogo{
   background-color: white;
-  width: 20%;
-  height: 290px;
+  width: 15%;
+  height: 230px;
   display: flex; 
   align-items: center; 
   justify-content: center;
@@ -484,6 +498,18 @@ productos*/
 }
 
 :root{
+  --gradienteHeatMap: linear-gradient(
+        to right,
+        #0C272C,
+        #0D2327,
+        #09181C,
+        #081214,
+        #030708,
+        black
+    );
+}
+
+:root{
   /*Puedo declarar una variable que guarde muchos colores poniendo la palabra reservada linear-gradient, la orientación
   que tendrá el gradiente y los colores que la conformarán separados por comas, todo dentro de su paréntesis*/
   --gradienteAmaRojo: linear-gradient(
@@ -509,12 +535,13 @@ productos*/
 }
 
 #productCatalogueTitle{
-  background-image: linear-gradient(to bottom, #F9F9F9, #cfcece); 
-  width: 55%; 
+  background-color: #07171B;
+  width: 53%;
+  border-bottom: 1px solid white; 
   height: 100px;
   font-family: FjallaOne; 
   font-size: 50px; 
-  color: #272227;
+  color: #B01E14;
   letter-spacing: 0.1px; 
   display: flex; 
   align-items: center; 
@@ -540,6 +567,25 @@ productos*/
   align-items: flex-start;
   /*Animación de fondo de color cambiante*/
   background-image: var(--gradienteAzul);
+  background-size: 300%;
+  background-position: left;
+  /*Ejecución de animación*/
+  animation-name: efectoColorFondo;/*Con esto hago que se ejecute la animación efectoColorFondo*/
+  animation-duration: 20s;/*Se usa para indicar el tiempo que tardará toda la simulación en ejecutarse*/
+  animation-iteration-count: infinite;/*Sirve para especificar cuántas veces se va a ejecutar mi animación*/
+  animation-timing-function: ease-in;/*Especifica un efecto de animación con un inicio lento solamente*/
+  animation-direction: alternate;/*Se alterna la dirección de la animación*/
+}
+
+#heatMap{
+  width: 100%; 
+  height: 800px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between;
+  align-items: center;
+  /*Animación de fondo de color cambiante*/
+  background-image: var(--gradienteHeatMap);
   background-size: 300%;
   background-position: left;
   /*Ejecución de animación*/
@@ -3138,7 +3184,7 @@ input[type=submit]{
 Las media queries se deben poner siempre después del id o class al que se están aplicando sino no harán nada*/
 @media all and (max-width: 1125px){
   #navbarLogo{
-    width: 30%;
+    width: 15%;
   }
   #navbarMenu{
     display: none;
@@ -3625,7 +3671,7 @@ Las media queries se deben poner siempre después del id o class al que se está
 }
 @media all and (max-width: 900px){
   #navbarLogo{
-    width: 50%;
+    width: 20%;
   }
   #logoBienvenida{
     width: 90%;
@@ -4235,7 +4281,7 @@ Las media queries se deben poner siempre después del id o class al que se está
 }
 @media all and (max-width: 600px){
   #navbarLogo{
-    width: 75%;
+    width: 30%;
   }
   #mensajeBienvenida{
     padding-top: 1vh;

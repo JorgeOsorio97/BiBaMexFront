@@ -24,10 +24,35 @@
 
 
 
+//INICIA HEATMAP, QUE EN REALIDAD SE LLAMA COROPLETH MAP
+/* Esto se usa para ver que hemos importado correctamente las librerías d3.js y topojson para el mapa
+console.log(d3);
+console.log(topojson);
+*/
+    let statesURL = 'javascript/mx_tj.json';
+    console.log(statesURL);
+    let backendHackathon2020URL = "";
 
+    let stateData;
+    let backendHackathon2020Data;
 
+    let canvas = d3.select('#canvas');//Esto se usa para seleccionar el elemento que tenga el id canvas
 
+    let drawmap = () => { //Con esta arrow function vamos a dibujar el mapa
 
+    }
+    
+    d3.json(statesURL).then( //Esto es una promesa que se usa para importar los datos de la url que yo le diga
+        (data, error) =>{ //Esto sirve para que tome la data de la URL que le dí y el posible error
+            if(error){
+                console.log(error);
+            }else{
+                stateData = data; //Guardo en la variable stateData que cree arriba el contenido de la URL
+                console.log(stateData); //con esto puedo ver lo que hay en el topojson que llegó a la variable statesURL
+            }
+        }
+    ) 
+//TERMINA COROPLETH MAP
 
 function displayMenuMobile(){ 
     var click = document.getElementById("navbarMenu").style.display;
