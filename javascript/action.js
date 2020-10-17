@@ -39,8 +39,18 @@ console.log(topojson);
 
     let canvas = d3.select('#canvas');//Esto se usa para seleccionar el elemento que tenga el id canvas
 
-    let drawmap = () => { //Con esta arrow function vamos a dibujar el mapa
-        
+    let drawMap = () => { //Con esta arrow function vamos a dibujar el mapa
+        canvas.selectAll('path')//Con canvas.selectAll estoy manipulando el elemento HTML que tiene esa misma clase o id
+        //en el parámetro pongo path porque es la parte del elemento svg que quiero jalar de mi json
+                .data(stateData)//Con esto hago que d3.js analice todos los elementos de la variable donde está el json
+                .enter()//Con esta línea de código hago que se recorra individualmente cada parte del json
+                .append('path')//Si no existe un path en el elemento de HTML con el id canvas, voy a agregar un path svg
+                .attr('d', d3.geoPath())
+                /*d es un parámetro de la etiqueta svg que fija coordenadas o líneas para dibujar los paths, todo esto 
+                es lo que viene en el topojson que convertimos o convertiremos en geojson. El método d3.geoPath sirve 
+                para convertir las coordenadas del geojson en un String que se le puede dar al atributo d de la 
+                etiqueta svg*/
+                .attr('class', 'state');//Aquí estoy cambiando la clase de mi elemento a una llamada state
     }
     
     d3.json(statesURL).then( //Esto es una promesa que se usa para importar los datos de la url que yo le diga
@@ -55,9 +65,10 @@ console.log(topojson);
                     2.- la información clave que queremos obtener del json*/
                 stateData = topojson.feature(data, data.objects.MEX_adm1).features;
                 //Del objeto geojson solo nos importa la parte de features y no el resto del array
+                console.log(stateData); //con esto puedo ver lo que hay en el topojson que llegó de la variable statesURL
                 
-                console.log(stateData); //con esto puedo ver lo que hay en el topojson que llegó a la variable statesURL
-                
+                drawMap();//Esto lo debo borrar cuando ya tenga mi json del negrou y fer
+
                 /*Aquí vamos a jalar lo que haya en el URL que me manden, para ello debo asegurarme que solo se 
                 haga cuando no exista un error en la llamada inicial, por eso lo pongo dentro del else*/
                 // d3.json(backendHackathon2020URL).then( 
@@ -67,6 +78,7 @@ console.log(topojson);
                 //         }else{
                 //             backendHackathon2020Data = data;
                 //             console.log(backendHackathon2020Data);
+                //             drawMap();
                 //         }
                 //     }
                 // )
