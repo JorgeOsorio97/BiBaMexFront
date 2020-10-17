@@ -140,10 +140,13 @@
             data3.addColumn('string', 'fecha');
             data3.addColumn('number', 'valor');
             data3.addColumn('number', 'constante');
+            data3.addColumn('number', 'constante');
+            data3.addColumn('number', 'constante');
+
 
             for(let i =0; i < datos2.length; i++)
                     {
-                    data3.addRow([datos2[i][0][0],datos2[i][0][1],780]);
+                    data3.addRow([datos2[i][0][0],datos2[i][0][1],780, 500, 200]);
                     }
 
             var options3 = {
@@ -151,8 +154,11 @@
             vAxis: {title: 'Cups'},
             hAxis: {title: 'Month'},
             seriesType: 'bars',
-            series: {1: {type: 'line'}}
+            series: {1: {type: 'line'}, 2: {type: 'line'}},
+        
+         
             };
+
 
             var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
             chart.draw(data3, options3);
