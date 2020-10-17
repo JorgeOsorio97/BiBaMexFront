@@ -89,8 +89,8 @@ svg{
 }
 
 #canvas{
-  min-width: 900px;
-  min-height: 500px;
+  min-width: 980px;
+  min-height: 750px;
 }
 
 #loader-wrapper{
@@ -601,7 +601,7 @@ productos*/
 
 #graph{
   width: 100%; 
-  height: 800px;
+  height: 1000px;
   display: flex; 
   flex-direction: column; 
   justify-content: space-between;
