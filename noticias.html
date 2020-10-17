@@ -60,18 +60,60 @@
         <div style="background-color: #0579C2; width: 100%; height: 1px;"></div>
         <div style="background-color: #0B4479; width: 100%; height: 1px;"></div>
 
-        <!-- Botones de graficas-->
+        <!-- Checkbox de graficas CHECAR CON BACKEND-->
         <div class="container my-5 text-center">
             <button classs="btn btn-danger w-100" onclick="traer()">obtener</button>
-             <button classs="btn btn-danger w-100" onclick="graficar()">Grafica de barras</button>
-             <button classs="btn btn-danger w-100" onclick="graficar2()">Grafica de lineas</button>
-             <button classs="btn btn-danger w-100" onclick="graficar3()">Grafica de barras con lineas</button>
-             <button classs="btn btn-danger w-100" onclick="graficar4()">Grafica de area</button>
-             <button classs="btn btn-danger w-100" onclick="graficar5()">Grafica de pie</button>
         </div>
+        <form>
+            <div class="container my-5 text-center">
+                <!--Como en el checkbox se pueden seleccionar varias opciones, se debe
+                dar un name diferente a cada checkbox-->
+    
+                <input type="radio" name="grafica" onclick="graficar()"/>
+                <label for="barras">Gráfica de barras</label>
+    
+                <input type="radio" name="grafica" onclick="graficar2()"/>
+                <label for="barras">Gráfica de línea</label>
+    
+                <input type="radio" name="grafica" onclick="graficar3()"/>
+                <label for="barras">Gráfica de barras con líneas</label>
+    
+                <input type="radio" name="grafica" onclick="graficar4()"/>
+                <label for="barras">Gráfica de área</label>
+    
+                <input type="radio" name="grafica" onclick="graficar5()"/>
+                <label for="barras">Gráfica de pie</label>
+            </div>
+            <div class="container my-5 text-center">
+                <select class="" name="ciudades">
+                    <!--Select me sirve para hacer una lista de opciones multiples, cada
+                    una con su respectivo nombre y value-->
+                    <!--El name sirve para que al darme un resultado me salga
+                    el nombre de mi select = el value de mi opcion-->
+                      <option value="DATO1">DATO #1</option>
+                      <option value="DATO2">DATO #2</option>
+                      <option value="DATO3">DATO #3</option>
+                      <option value="DATO4">DATO #4</option>
+                    </select>
+              
+                    <select class="" name="">
+                      <option value=""></option>
+                    </select>
+                    <!--El value es para poner nombres mas sencillos de entender para la
+                    maquina que el nombre tal cual de la opcion que tiene acentos, etc.
+                    los cuales se encuentran dentro de la etiqueta y son los que apareceran
+                    en pantalla para que sea mas entendible para el usuario-->
+              
+                    <input type="submit"/>
+                    <!--Se debe poner un input de submit para que me envie los resultados
+                    estos saldran en el url-->
+
+            </div>
+
+        </form>
+        
 
         <!-- Graficos -->
-        
         <script>
             var contenido = document.querySelector('#contenido')
             var datos2 = Array()
@@ -93,7 +135,6 @@
                 }
                 
                 datos2=prueba
-                console.log(datos2)
             } 
             
             function graficar()
@@ -267,20 +308,19 @@
             }
         </script>
         <div class="content-box">
-
-            <div class=grid>
-                
+            <div class="grid-container">
                 <!--grafica de barras-->
-                <div class="a" id="top_x_div" style="width: 100px; height: 500px;"></div>
+                <div id="top_x_div" style="width: 900px; height: 500px;"></div>
                 <!--grafica de lineas-->
-                <div class="b" id="line_top_x"></div>
+                <div id="line_top_x" style="width: 900px; height: 500px;"></div>
                 <!--grafica de barras con lineas-->
-                <div class="c" id="chart_div" style="width: 900px; height: 500px;"></div>
+                <div id="chart_div" style="width: 900px; height: 500px;"></div>
                 <!--grafica de area-->
-                <div class="d" id="chart_div2" style="width: 100%; height: 500px;"></div>
+                <div  id="chart_div2" style="width: 900px; height: 500px;"></div>
                 <!--grafica de pie-->
-                <div class="e" id="piechart" style="width: 900px; height: 500px;"></div>
+                <div  id="piechart" style="width: 900px; height: 500px;"></div>
             </div>
+        </div>
         
 
         <div style="width: 100%; height: 60px; background-color: #171717; display: flex; align-items: center; justify-content: flex-start;">
