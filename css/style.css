@@ -1,10 +1,22 @@
+.grid {
+  justify-items: right;
+  align-items: end;
+  justify-content: stretch;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 
+}
 
+.a {
+  width: 500;
+  height: 500;
 
+}
 
+.content-box { 
+  box-sizing: content-box; 
 
-
-
+}
 
 
 

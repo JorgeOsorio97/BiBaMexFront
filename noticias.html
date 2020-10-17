@@ -16,6 +16,10 @@
     <!--Título de la página-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!--JQuery para el efecto de loading-->
+    <!-- Required meta tags -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 <body>
     <div id="navbar-container">
@@ -48,18 +52,246 @@
         </div>
     </div>
     <!-- Navbar -->
+
     <div style="width: 100%; height: 112px;">
         <div style="width: 100%; height: 80px; background-color: #2D2D2D; display: flex; align-items: center; justify-content: flex-end;">
             <img src="img/LOGO_BLANCO_Alargado.png" alt="Logo Crea Proyectos" id="legalBarImage">
         </div>
         <div style="background-color: #0579C2; width: 100%; height: 1px;"></div>
         <div style="background-color: #0B4479; width: 100%; height: 1px;"></div>
+
+        <!-- Botones de graficas-->
+        <div class="container my-5 text-center">
+            <button classs="btn btn-danger w-100" onclick="traer()">obtener</button>
+             <button classs="btn btn-danger w-100" onclick="graficar()">Grafica de barras</button>
+             <button classs="btn btn-danger w-100" onclick="graficar2()">Grafica de lineas</button>
+             <button classs="btn btn-danger w-100" onclick="graficar3()">Grafica de barras con lineas</button>
+             <button classs="btn btn-danger w-100" onclick="graficar4()">Grafica de area</button>
+             <button classs="btn btn-danger w-100" onclick="graficar5()">Grafica de pie</button>
+        </div>
+
+        <!-- Graficos -->
+        
+        <script>
+            var contenido = document.querySelector('#contenido')
+            var datos2 = Array()
+            function traer(){
+                fetch('https://mindicador.cl/api/dolar')
+                .then(res=> res.json())
+                .then(datos =>{
+                tabla(datos)
+                })
+            }  
+
+            function tabla(datos){
+                var prueba = new Array(datos.serie.length)
+
+                for(var j=0; j < datos.serie.length; j++)
+                {
+                    var i = datos.serie
+                    prueba[j] = [[`${i[j].fecha}`, Number.parseFloat(`${i[j].valor}`)]];            
+                }
+                
+                datos2=prueba
+                console.log(datos2)
+            } 
+            
+            function graficar()
+            {
+                //librerias para barras. 
+                google.charts.load('current', {'packages':['bar']});
+                google.charts.setOnLoadCallback(drawStuff);
+
+                //grafica barras
+                function drawStuff() {
+
+                    //console.log(Number.parseFloat(datos2[1][0][1]))
+
+                    var data = new google.visualization.DataTable();
+                    //tipo de dato, y el dato
+                    data.addColumn('string', 'fecha');
+                    data.addColumn('number', 'valor');
+
+                    for(let i =0; i < datos2.length; i++)
+                    {
+                    data.addRow([datos2[i][0][0], datos2[i][0][1]]);
+                    }
+
+                var options = {
+                    width: 800,
+                    colors: ['#95C0DE'],
+                    legend: { position: 'none' },
+                    chart: {
+                    title: 'Dolar',
+                    subtitle: 'Cambio del dolar mensual' },
+                    axes: {
+                    x: {
+                        0: { side: 'bottom', label: 'fecha'} // Top x-axis.
+                    }
+                    },
+                    bar: { groupWidth: "70%" }
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                // Convert the Classic options to Material options.
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+                };
+            }
+
+                
+            function graficar2()
+            {
+                //librerias para lineas.
+                google.charts.load('current', {'packages':['line']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                //grafica de linea  
+                function drawChart()
+                {
+
+                var data2 = new google.visualization.DataTable();
+                data2.addColumn('string', 'fecha');
+                data2.addColumn('number', 'valor');
+                data2.addColumn('number', 'constante');
+
+                for(let i =0; i < datos2.length; i++)
+                        {
+                        data2.addRow([datos2[i][0][0],datos2[i][0][1],780]);
+                        }
+
+                var options2 = 
+                {
+                    chart: 
+                    {
+                    title: 'Box Office Earnings in First Two Weeks of Opening',
+                    subtitle: 'in millions of dollars (USD)'
+                    },
+                    width: 900,
+                    height: 500,
+                    axes: 
+                    {
+                    x: 
+                    {
+                        0: {side: 'bottom'}
+                    }
+                    }
+                };
+
+                var chart = new google.charts.Line(document.getElementById('line_top_x'));
+                chart.draw(data2, google.charts.Line.convertOptions(options2));
+            }
+            }
+
+            function graficar3()
+            {
+            //librerias para barras con linea. 
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawVisualization);
+
+            function drawVisualization() 
+            {
+                var data3 = new google.visualization.DataTable();
+                data3.addColumn('string', 'fecha');
+                data3.addColumn('number', 'valor');
+                data3.addColumn('number', 'constante');
+
+                for(let i =0; i < datos2.length; i++)
+                        {
+                        data3.addRow([datos2[i][0][0],datos2[i][0][1],780]);
+                        }
+
+                var options3 = {
+                title : 'Monthly Coffee Production by Country',
+                vAxis: {title: 'Cups'},
+                hAxis: {title: 'Month'},
+                seriesType: 'bars',
+                series: {1: {type: 'line'}}
+                };
+
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+                chart.draw(data3, options3);
+            }
+            }
+            
+            function graficar4()
+            {
+            //librerias para areas
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() 
+            {
+                var data4 = new google.visualization.DataTable();
+                data4.addColumn('string', 'fecha');
+                data4.addColumn('number', 'valor');
+                data4.addColumn('number', 'constante');
+
+                for(let i =0; i < datos2.length; i++)
+                        {
+                        data4.addRow([datos2[i][0][0],datos2[i][0][1],580]);
+                        }
+
+                var options4 = 
+                {
+                title: 'Company Performance',
+                hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
+                };
+
+                var chart = new google.visualization.AreaChart(document.getElementById('chart_div2'));
+                chart.draw(data4, options4);
+            }
+            }
+
+            function graficar5()
+            {
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data5 = new google.visualization.DataTable();
+                    data5.addColumn('string', 'fecha');
+                    data5.addColumn('number', 'valor');
+
+                    for(let i =0; i < datos2.length; i++)
+                            {
+                            data5.addRow([datos2[i][0][0],datos2[i][0][1]]);
+                            }        
+
+                    var options5 = {
+                    title: 'My Daily Activities'
+                    };
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                    chart.draw(data5, options5);
+                }
+            }
+        </script>
+        <div class="content-box">
+
+            <div class=grid>
+                
+                <!--grafica de barras-->
+                <div class="a" id="top_x_div" style="width: 100px; height: 500px;"></div>
+                <!--grafica de lineas-->
+                <div class="b" id="line_top_x"></div>
+                <!--grafica de barras con lineas-->
+                <div class="c" id="chart_div" style="width: 900px; height: 500px;"></div>
+                <!--grafica de area-->
+                <div class="d" id="chart_div2" style="width: 100%; height: 500px;"></div>
+                <!--grafica de pie-->
+                <div class="e" id="piechart" style="width: 900px; height: 500px;"></div>
+            </div>
+        
+
         <div style="width: 100%; height: 60px; background-color: #171717; display: flex; align-items: center; justify-content: flex-start;">
             <div id="legalBarText">
                 ©2017 CREA PROYECTOS - Todos los Derechos Reservados
             </div>
         </div>
     </div>
+    
+    
+    
     <!-- Legal Bar -->
     <div id="loader-wrapper">
         <span id="loader">
@@ -67,6 +299,7 @@
             </span>
         </span>
     </div>
+
     <script>
         $(window).on("load", function(){
             $("#loader-wrapper").fadeOut("slow");
@@ -75,5 +308,12 @@
     <!-- Loading efect -->
     <script type="text/javascript" src="javascript/action.js"></script>
     <!-- CONEXIÓN CON DOCUMENTO DE EFECTOS JAVASCRIPT -->
+    
+    
+
+
+    
+
+
 </body>
 </html>
