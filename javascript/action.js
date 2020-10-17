@@ -30,7 +30,7 @@ console.log(d3);
 console.log(topojson);
 */
 
-    let statesURL = 'https://gist.githubusercontent.com/leenoah1/535b386ec5f5abdb2142258af395c388/raw/a045778d28609abc036f95702d6a44045ae7ca99/geo-data.json';
+    let statesURL = 'https://gist.githubusercontent.com/diegovalle/10487038/raw/e7e6d9db45129dca85d4142860fe15a75aea1f58/national.json';
     console.log(statesURL);
     let backendHackathon2020URL = "";
 
@@ -50,7 +50,8 @@ console.log(topojson);
                 es lo que viene en el topojson que convertimos o convertiremos en geojson. El método d3.geoPath sirve 
                 para convertir las coordenadas del geojson en un String que se le puede dar al atributo d de la 
                 etiqueta svg*/
-                .attr('class', 'state');//Aquí estoy cambiando la clase de mi elemento a una llamada state
+                .attr('class', 'state')//Aquí estoy cambiando la clase de mi elemento a una llamada state
+                .attr('fill', '#16393A');//Aquí estoy cambiando la clase de mi elemento a una llamada state
     }
     
     d3.json(statesURL).then( //Esto es una promesa que se usa para importar los datos de la url que yo le diga
@@ -63,7 +64,7 @@ console.log(topojson);
                 que puede leer la librería d3.js, a este le debo dar 2 parámetros:
                     1.- data, que es el objeto topojson
                     2.- la información clave que queremos obtener del json*/
-                stateData = topojson.feature(data, data.objects.MEX_adm1).features;
+                stateData = topojson.feature(data, data.objects.counties).features;
                 //Del objeto geojson solo nos importa la parte de features y no el resto del array
                 console.log(stateData); //con esto puedo ver lo que hay en el topojson que llegó de la variable statesURL
                 
