@@ -1,10 +1,12 @@
 
 .sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
+  margin: 0px;
+  padding-top: 20%;
+  width: 20%;
   background-color: #f1f1f1;
   position: fixed;
+  top: 0;
+  left: 0;
   height: 100%;
   overflow-y: auto;
 }
@@ -18,26 +20,6 @@
   background-color: gray;
   margin-left: 170px;
 }
-
-.content {
-  box-sizing: content-box;
-  width: 100%; 
-  height: 61vh;
-  padding-bottom: 15px;
-  position: static;
-  align-content: initial;
-  align-items: left; 
-
-  border-style: hidden;
-
-}
-.content-box {
-  box-sizing: border-box; 
-  width: 1000px;
-  align-items: right;
-
-}
-
 
 .searcher{
   border-style:hidden;
@@ -97,12 +79,6 @@ body{
   min-width: 980px;
   min-height: 750px;
   background-color: #122d30;
-}
-
-svg{
-  margin: 50px;
-  height: 600px;
-  width: 80%;
 }
 
 #loader-wrapper{
@@ -675,9 +651,29 @@ productos*/
   animation-direction: alternate;/*Se alterna la dirección de la animación*/
 }
 
+#graphCatalogue{
+  width: 100%; 
+  padding: 5%;
+  height: 1750px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /*Animación de fondo de color cambiante*/
+  background-image: var(--gradienteAzul);
+  background-size: 300%;
+  background-position: left;
+  /*Ejecución de animación*/
+  animation-name: efectoColorFondo;/*Con esto hago que se ejecute la animación efectoColorFondo*/
+  animation-duration: 20s;/*Se usa para indicar el tiempo que tardará toda la simulación en ejecutarse*/
+  animation-iteration-count: infinite;/*Sirve para especificar cuántas veces se va a ejecutar mi animación*/
+  animation-timing-function: ease-in;/*Especifica un efecto de animación con un inicio lento solamente*/
+  animation-direction: alternate;/*Se alterna la dirección de la animación*/
+}
+
 #calcuGraph{
   width: 100%; 
-  height: 670px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
+  height: 800px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
   display: flex; 
   flex-direction: column; 
   justify-content: space-between;
@@ -713,9 +709,9 @@ productos*/
   animation-direction: alternate;/*Se alterna la dirección de la animación*/
 }
 
-#graphResultCalcu{
+#resultCalcu{
   background-color: #F9F9F9; 
-  width: 80%; 
+  width: 80%;
   height: 500px; 
   margin: 5%;
 }
@@ -993,6 +989,8 @@ productos*/
   font-size: 17px;
   font-family: OpenSans-Regular; 
   padding-left: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 #legalBarImage{
@@ -3380,6 +3378,9 @@ Las media queries se deben poner siempre después del id o class al que se está
 @media all and (max-width: 1125px){
   #navbarLogo{
     width: 15%;
+  }
+  .sidebar {
+    padding-top: 25%;
   }
   #navbarMenu{
     display: none;
