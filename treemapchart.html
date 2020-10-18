@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="Crea proyectos es una blabla">
+    <!--Descripción del sitio-->
+    <meta name="keywords" content="Crea Proyectos,aviso,privacidad">
+    <!--Palabras clave-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheetsausage" href="css/sausagestylesheet.css">
+    <!--Conexión con hoja de estilos CSS-->
+    <link rel="icon" href="img/LOGO_BLANCO.png" type="img" sizes="16x16">
+    <!--Ícono del navegador-->
+    <title>BiBa México | Heatmap</title>
+    <!--Título de la página-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!--JQuery para el efecto de loading-->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- IMPORTACIÓN DE LA LIBRERÍA D3.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <!-- IMPORTACIÓN DE LA LIBRERÍA TOPOJSON DE CLOUDFARE -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+            google.charts.load('current', {'packages':['treemap']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Estado', 'Division', 'Tamano', 'Para todos los saldos (color)'],
+          [ 'Mexico', null , 0, 0],
+          [ 'Bajio', 'Mexico' , 1.5, 45],
+          [ 'Aguascalientes', 'Bajio' , 0, 20],
+          [ 'Guanajuato', 'Bajio' , 0.5, 11],
+          [ 'Hidalgo', 'Bajio' , 5.0, 30],
+          [ 'Queretaro', 'Bajio' , 4.8, 3],
+          [ 'San Luis Potosi', 'Bajio' , 2.5, -10],
+          [ 'Zacatecas', 'Bajio' , 1.5, 8],
+          [ 'Metropolitana', 'Mexico' , 0, 5],
+
+          [ 'Ciudad de Mexico', 'Metropolitana' , 8.8, 8],
+          [ 'Estado de Mexico', 'Metropolitana' , 6.0, 0],
+          
+          [ 'Noroeste', 'Mexico' , 0, 15],
+          [ 'Baja California Norte', 'Noroeste' , 15.9, 14],
+          [ 'Bajo California Sur', 'Noroeste' , 5.6, 13],
+          [ 'Chihuahua', 'Noroeste' , 10.2, 12],
+          [ 'Sinaloa', 'Noroeste' , 7.7, 5],
+          [ 'Sonora', 'Noroeste' , 12.3, 17],
+
+          [ 'Occidente', 'Mexico' , 0, -5],
+          [ 'Colima', 'Occidente' , 15.5, 2],
+          [ 'Jalisco', 'Occidente' , 4.1, 7],
+          [ 'Michoacan', 'Occidente' , 48.9, -1],
+          [ 'Nayarit', 'Occidente' , 22.8, 3],
+
+          [ 'Sur', 'Mexico' , 0, 6],
+          [ 'Guerrero', 'Sur' , 12.1, 3],
+          [ 'Morelos', 'Sur' , 6.0, 14],
+          [ 'Oaxaca', 'Sur' , 2.8, 10],
+          [ 'Puebla', 'Sur' , 8.1, -1],
+          [ 'Tlaxcala', 'Sur' , 5.9, 11],
+          [ 'Veracruz', 'Sur' , 4.5, 13],
+
+          [ 'Sureste', 'Mexico' , 0, 66],
+          [ 'Campeche', 'Sureste' , 2.2, 42],
+          [ 'Chiapas', 'Sureste' , 0.6, 33],
+          [ 'Quintana Roo', 'Sureste' , 16.4, 14],
+          [ 'Tabasco', 'Sureste' , 2.6, 41],
+          [ 'Yucatan', 'Sureste' , 6.4, 9]
+        ]);
+
+        tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
+
+        tree.draw(data, {
+          minColor: '#f00',
+          midColor: '#ddd',
+          maxColor: '#0d0',
+          headerHeight: 15,
+          fontColor: 'black',
+          showScale: true,
+        });
+
+      }
+    </script>
+</head>
+<body>
+    <div id="navbar-container">
+        <div id="navbar">
+            <div id="navbarLogo">
+                <a href="index.html"><img src="img/LOGO.png" alt="Logo Crea Proyectos" width="100%"></a>
+            </div>
+            <div >
+                <div onclick="displayMenuMobile()" id="navbarMiniMenu">
+                    <img src="img/menu.svg" alt="menuMobile" width="100%">
+                </div>
+                <div id="navbarMenu">
+                    <a href="index.html" class="menuButton2">
+                        Inicio
+                    </a>
+                    <a href="calculadoraGraficadora.html" class="menuButton2">
+                        Calculadora/Graficadora
+                    </a>
+                    <a href="heatmap.html" id="menuButton1">
+                        TreeMap
+                    </a>
+                    <a href="graficas.html" class="menuButton2">
+                        Gráficas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar -->
+
+    <div id="graph">
+        <div id="treechart" style="width: 500%;">
+            TREE MAP
+        </div>
+        <div id="grayText1">
+            <span style="color: #fa5b1f;">*</span> PARTICIPACIÓN DE MERCADO POR ESTADO
+        </div>
+        <div id="chart_div" style="width: 1000px; height: 500px; position: inherit;"></div>
+
+        <svg id="chart_div" style="margin: 50px; height: 600px; width: 100%;">
+
+        </svg>
+    </div>
+    
+    
+    <!--HEATMAP-->
+    <div style="width: 100%; height: 112px;">
+        <div style="width: 100%; height: 80px; background-color: #2D2D2D; display: flex; align-items: center; justify-content: flex-end;">
+            <img src="img/LOGO_BLANCO_Alargado.png" alt="Logo Crea Proyectos" id="legalBarImage">
+        </div>
+        <div style="background-color: #0579C2; width: 100%; height: 1px;"></div>
+        <div style="background-color: #0B4479; width: 100%; height: 1px;"></div>
+        <div style="width: 100%; height: 60px; background-color: #171717; display: flex; align-items: center; justify-content: flex-start;">
+            <div id="legalBarText">
+                ©2017 CREA PROYECTOS - Todos los Derechos Reservados
+            </div>
+        </div>
+    </div>
+    <!-- Legal Bar -->
+    <div id="loader-wrapper">
+        <span id="loader">
+            <span id="loader-inner">
+            </span>
+        </span>
+    </div>
+    <script>
+        $(window).on("load", function(){
+            $("#loader-wrapper").fadeOut("slow");
+        });
+    </script>
+    <!-- Loading efect -->
+    <script type="text/javascript" src="javascript/heatmap.js"></script>
+    <!-- CONEXIÓN CON DOCUMENTO DE EFECTOS JAVASCRIPT -->
+</body>
+</html>

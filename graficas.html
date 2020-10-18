@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
      <!-- Graficos -->
-     <script>
+     <script type="text/javascript">
         var contenido = document.querySelector('#contenido')
         var datos2 = Array()
         
@@ -43,7 +43,7 @@
             
             datos2=prueba
         } 
-        
+       
         function graficar()
         {
             //librerias para barras. 
@@ -52,9 +52,6 @@
 
             //grafica barras
             function drawStuff() {
-
-                //console.log(Number.parseFloat(datos2[1][0][1]))
-
                 var data = new google.visualization.DataTable();
                 //tipo de dato, y el dato
                 data.addColumn('string', 'fecha');
@@ -212,35 +209,38 @@
                 var options5 = {
                 title: 'My Daily Activities'
                 };
-                var chart = new google.visualization.PieChart(document.getElementById('piechart').style.backgroundColor='transparent');
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
                 chart.draw(data5, options5);
             }
         }
     </script>
 </head>
 <body>
-    <div id="navbar-container">
+    <div id="navbar-container"> 
         <div id="navbar">
+            <div id="navbarLogo">
+                <a href="index.html"><img src="img/LOGO.png" alt="Logo BibaMexico" width="100%"></a>
+            </div>
             <div >
                 <div onclick="displayMenuMobile()" id="navbarMiniMenu">
                     <img src="img/menu.svg" alt="menuMobile" width="100%">
                 </div>
                 <div id="navbarMenu">
-                    <a href="index.html" class="menuButton2">
+                    <a href="index.html" class="menuButton2" style="text-decoration: none; height: 100%;">
                         Inicio
                     </a>
-                    <a href="calculadoraGraficadora.html" class="menuButton2">
+                    <a href="calculadoraGraficadora.html" class="menuButton2" style="text-decoration: none; height: 100%;">
                         Calculadora/Graficadora
                     </a>
-                    <a href="heatmap.html" class="menuButton2" >
+                    <a href="heatmap.html" class="menuButton2" style="text-decoration: none; height: 100%;">
                         Heatmap
                     </a>
-                    <a href="graficas2.html" id="menuButton1">
+                    <a href="graficas.html" id="menuButton1" style="text-decoration: none; height: 100%;">
                         Gráficas
                     </a>
                 </div>
+                <!-- Mau es un pinche tonto -->
             </div>
-            
         </div>
     </div>
     <!-- Navbar -->
@@ -261,28 +261,60 @@
                 </select>
                  <!--Como en el checkbox se pueden seleccionar varias opciones, se debe
                 dar un name diferente a cada checkbox-->
-                <input type="checkbox" name="grafica" onclick="graficar()" />
-                <label for="barras">Gráfica de barras</label>
-    
-                <input type="checkbox" name="grafica" onclick="graficar2()"/>
-                <label for="barras">Gráfica de línea</label>
-    
-                <input type="checkbox" name="grafica" onclick="graficar3()"/>
-                <label for="barras">Gráfica de barras con líneas</label>
-    
-                <input type="checkbox" name="grafica" onclick="graficar4()"/>
-                <label for="barras">Gráfica de área</label>
-    
-                <input type="checkbox" name="grafica" onclick="graficar5()"/>
-                <label for="barras">Gráfica de pie</label>
-            
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;" value="barras"/>
+                    Gráfica de barras
+                </label>
+
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;" value="linea"/>
+                    Gráfica de línea
+                </label>
+
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;" value="barraslineas"/>
+                    Gráfica de barras con líneas
+                </label>
+
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;" value="area"/>
+                    Gráfica de área
+                </label>
+
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;"  value="pie"/>
+                    Gráfica de pie
+                </label>
+
                 <div class="btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="checkbox" onclick="traer()"> Checked
-                    </label>
-                    
+                    <label class="btn btn-secondary active" style="width: 90%; margin: 5%;">
+                        <input type="checkbox" onclick="aldarclic()"> Checked
+                    </label>  
                 </div>
-                
+
+                <script>
+                    function aldarclic()
+                    {
+                        const checkboxes = document.querySelectorAll('input[name="grafica"]:checked');
+                        let arreglocharts = [];
+                        checkboxes.forEach((radio) => {
+                            arreglocharts.push(radio.value);
+                        });
+                        traer();
+
+                        switch(arreglocharts[0])
+                        {
+                            case 'barras':  graficar();break;
+                            case 'linea': graficar2();break;
+                            case 'barraslineas': graficar3(); break;
+                            case 'area': graficar4(); break;
+                            case 'pie':  graficar5();break;
+                        }
+                       
+                    }
+                    
+                </script>
+               
                     <!-- <input type="submit"/> -->
                     <!--Se debe poner un input de submit para que me envie los resultados
                     estos saldran en el url-->
@@ -292,24 +324,21 @@
         
     </div>
 
-    <div >
-        
-
-        <div class="grid-graphs" >
+    <div style="background-color: blue;">
+        <div id="graphCatalogue">
             <!--grafica de barras-->
-            <div class="content" id="top_x_div" ></div>
+            <div id="top_x_div" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
             <!--grafica de lineas-->
-            <div class="content" id="line_top_x"></div>
+            <div id="line_top_x" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
             <!--grafica de barras con lineas-->
-            <div class="content" id="chart_div"></div>
+            <div id="chart_div" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
             <!-- grafica de area-->    
-            <div class="content" id="chart_div2" ></div>
+            <div id="chart_div2" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
             <!-- grafica pie-->     
-            <div class="content" id="piechart"></div>
-            
+            <div id="piechart" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
         </div>
-
     </div>
+    <!-- Display para las gráficas -->
 
    
         

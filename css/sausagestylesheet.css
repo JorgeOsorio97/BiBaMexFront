@@ -1,12 +1,10 @@
 
 .sidebar {
-  margin: 0px;
-  padding-top: 20%;
-  width: 20%;
+  margin: 0;
+  padding: 0;
+  width: 200px;
   background-color: #f1f1f1;
   position: fixed;
-  top: 0;
-  left: 0;
   height: 100%;
   overflow-y: auto;
 }
@@ -94,7 +92,15 @@ body{
 #canvas{
   min-width: 980px;
   min-height: 750px;
-  background-color: #122d30;
+  background-color: pink;
+}
+
+svg{
+  margin: 50px;
+  height: 600px;
+  width: 100%;
+  position: fixed;
+  overflow: inherit;
 }
 
 #loader-wrapper{
@@ -497,6 +503,7 @@ productos*/
 :root{
   --gradienteAzul: linear-gradient(
         to right,
+        white,
         rgb(196, 231, 255),
         #26C2F1,
         #00ADED,
@@ -623,11 +630,11 @@ productos*/
   justify-content: flex-end;
 }
 
-#heatmap{
+#treechart{
   background-color: #07171B;
   width: 53%;
   border-bottom: 1px solid white; 
-  height: 100px;
+  height: 900px;
   font-family: FjallaOne; 
   font-size: 50px; 
   color: #B01E14;
@@ -639,7 +646,7 @@ productos*/
 
 #productGroup{
   width: 100%; 
-  height: 500px;
+  height: 1500px;
   display: flex;
   justify-content: flex-start; 
   align-items: center; 
@@ -649,7 +656,7 @@ productos*/
 
 #productCatalogue{
   width: 100%; 
-  height: 570px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
+  height: 1670px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
   display: flex; 
   flex-direction: column; 
   justify-content: space-between;
@@ -666,29 +673,9 @@ productos*/
   animation-direction: alternate;/*Se alterna la dirección de la animación*/
 }
 
-#graphCatalogue{
-  width: 100%; 
-  padding: 5%;
-  height: 1750px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
-  display: flex; 
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  /*Animación de fondo de color cambiante*/
-  background-image: var(--gradienteAzul);
-  background-size: 300%;
-  background-position: left;
-  /*Ejecución de animación*/
-  animation-name: efectoColorFondo;/*Con esto hago que se ejecute la animación efectoColorFondo*/
-  animation-duration: 20s;/*Se usa para indicar el tiempo que tardará toda la simulación en ejecutarse*/
-  animation-iteration-count: infinite;/*Sirve para especificar cuántas veces se va a ejecutar mi animación*/
-  animation-timing-function: ease-in;/*Especifica un efecto de animación con un inicio lento solamente*/
-  animation-direction: alternate;/*Se alterna la dirección de la animación*/
-}
-
 #calcuGraph{
   width: 100%; 
-  height: 1200px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
+  height: 670px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
   display: flex; 
   flex-direction: column; 
   justify-content: space-between;
@@ -708,7 +695,7 @@ productos*/
 #graph{
   width: 100%; 
   height: 1000px;
-  display: flex; 
+  display: initial; 
   flex-direction: column; 
   justify-content: space-between;
   align-items: center;
@@ -724,23 +711,16 @@ productos*/
   animation-direction: alternate;/*Se alterna la dirección de la animación*/
 }
 
-#resultCalcu{
-  background-color: #f9f9f9f1; 
-  width: 80%;
-  height: 500px; 
-  margin: 5%;
-}
-
-#resultCalcu2{
-  background-color: rgba(20, 20, 20, 0.89);
-  width: 80%;
+#graphResultCalcu{
+  background-color: #F9F9F9; 
+  width: 80%; 
   height: 500px; 
   margin: 5%;
 }
 
 .productsContainer{
   width: 285px;
-  height: 350px;
+  height: 315px;
   margin: 1%;
   display: flex;
   justify-content: center;
@@ -750,7 +730,7 @@ productos*/
 .efectoImagenTexto{
   width: 95%;
   border: #d3d2d2 2px solid;
-  height: 335px;
+  height: 300px;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -766,7 +746,7 @@ productos*/
   content: '';
   position: absolute;
   top: 5%;
-  bottom: 33%;
+  bottom: 22%;
   left: 5%;
   right: 5%;
   border-top: solid #a8a8a8 1px;
@@ -782,7 +762,7 @@ productos*/
   content: '';
   position: absolute;
   top: 5%;
-  bottom: 33%;
+  bottom: 22%;
   left: 5%;
   right: 5%;
   border-left: solid #a8a8a8 1px;
@@ -806,7 +786,7 @@ productos*/
 .efectoImagenTextoContornoClaro{
   width: 95%;
   border: #d3d2d2 2px solid;
-  height: 335px;
+  height: 300px;
   display: flex;
   background-color: white;
   justify-content: space-between;
@@ -860,7 +840,7 @@ productos*/
 }
 
 #productsToTheLeft{
-  margin-left: 5%;
+  margin-left: 2%;
 }
 
 #productsToTheRight{
@@ -881,9 +861,8 @@ productos*/
 
 #visualizerLogoContainer{
   background-color: #F9F9F9; 
-  width: 13%; 
-  padding: 2%;
-  height: 450px; 
+  width: 15%; 
+  height: 500px; 
   display: flex; 
   align-items: flex-end; 
   justify-content: center;
@@ -901,7 +880,7 @@ productos*/
 }
 
 #visualizerContainer{
-  width: 50%; 
+  width: 45%; 
   height: 400px; 
   display: flex; 
   align-items: center; 
@@ -914,7 +893,7 @@ productos*/
   width: 100%; 
   height: 80px; 
   color: white; 
-  font-size: 45px; 
+  font-size: 50px; 
   font-family: Anton-Regular;
 }
 
@@ -971,7 +950,7 @@ productos*/
   border: #0579C2 2px solid;
 }
 #visualizerButton:hover::before{
-  height: 900%;
+  height: 700%;
 }
 
 #clientsContainer{
@@ -1012,8 +991,6 @@ productos*/
   font-size: 17px;
   font-family: OpenSans-Regular; 
   padding-left: 5%;
-  display: flex;
-  justify-content: center;
 }
 
 #legalBarImage{
@@ -3306,7 +3283,6 @@ productos*/
   align-items: flex-start; 
   letter-spacing: 3px; 
   padding-top: 10px;
-  display: none;
 }
 
 #contact_data{
@@ -3372,13 +3348,13 @@ input[type=text]{
   background-color: white;
 }
 
-#botonFun2{
+.botonFun2{
   width: 90%;
   height: 40px;
   border: solid 2px salmon;
   font-family: OpenSansCondensed;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
   letter-spacing: 4px;
   /*Aquí mandaré a llamar mi variable tipo gradiente de colores, esto lo debo hacer usando la instrucción 
@@ -3392,7 +3368,7 @@ input[type=text]{
   background-position: left;/*Le doy una posición inicial*/
   transition: background-position 0.5s ease-in-out;/*A la posición si le puedo aplicar un transition*/
 }
-#botonFun2:hover{
+.botonFun2:hover{
   /*El transition simplemente moverá el fondo de lugar haciendo que parezca como si fuera un efecto con el gradiente*/
   background-position: right;
 }
@@ -3402,9 +3378,6 @@ Las media queries se deben poner siempre después del id o class al que se está
 @media all and (max-width: 1125px){
   #navbarLogo{
     width: 15%;
-  }
-  .sidebar {
-    padding-top: 25%;
   }
   #navbarMenu{
     display: none;
@@ -3466,10 +3439,10 @@ Las media queries se deben poner siempre después del id o class al que se está
     height: 90vh;
   }
   #productGroup{
-    height: 750px;
+    height: 1750px;
   }
   #productCatalogue{
-    height: 920px;
+    height: 1920px;
   }
   #productsToTheLeft{
     margin-left: 1%;
