@@ -25,11 +25,7 @@
   height: 61vh;
   padding-bottom: 15px;
   position: static;
-  align-content: initial;
   align-items: left; 
-
-  border-style: hidden;
-
 }
 .content-box {
   box-sizing: border-box; 

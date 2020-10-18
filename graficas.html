@@ -212,7 +212,7 @@
                 var options5 = {
                 title: 'My Daily Activities'
                 };
-                var chart = new google.visualization.PieChart(document.getElementById('piechart').style.backgroundColor='transparent');
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
                 chart.draw(data5, options5);
             }
         }
@@ -261,28 +261,50 @@
                 </select>
                  <!--Como en el checkbox se pueden seleccionar varias opciones, se debe
                 dar un name diferente a cada checkbox-->
-                <input type="checkbox" name="grafica" onclick="graficar()" />
-                <label for="barras">Gráfica de barras</label>
+                <input type="checkbox" name="grafica" value="barras"/>
+                <label for="grafica">Gráfica de barras</label>
     
-                <input type="checkbox" name="grafica" onclick="graficar2()"/>
-                <label for="barras">Gráfica de línea</label>
+                <input type="checkbox" name="grafica" value="linea"/>
+                <label for="grafica">Gráfica de línea</label>
     
-                <input type="checkbox" name="grafica" onclick="graficar3()"/>
-                <label for="barras">Gráfica de barras con líneas</label>
+                <input type="checkbox" name="grafica" value="barraslineas"/>
+                <label for="grafica">Gráfica de barras con líneas</label>
     
-                <input type="checkbox" name="grafica" onclick="graficar4()"/>
-                <label for="barras">Gráfica de área</label>
+                <input type="checkbox" name="grafica" value="area"/>
+                <label for="grafica">Gráfica de área</label>
     
-                <input type="checkbox" name="grafica" onclick="graficar5()"/>
-                <label for="barras">Gráfica de pie</label>
-            
+                <input type="checkbox" name="grafica" value="pie"/>
+                <label for="grafica">Gráfica de pie</label>
+                
                 <div class="btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary active">
-                        <input type="checkbox" onclick="traer()"> Checked
+                        <input  type="checkbox" onclick="aldarclic()"> Checked
                     </label>
-                    
                 </div>
-                
+
+                <script>
+                    function aldarclic()
+                    {
+                        const checkboxes = document.querySelectorAll('input[name="grafica"]:checked');
+                        let arreglocharts = [];
+                        checkboxes.forEach((checkbox) => {
+                            arreglocharts.push(checkbox.value);
+                        });
+                        traer();
+
+                        switch(arreglocharts[0])
+                        {
+                            case 'barras':  graficar();break;
+                            case 'linea': graficar2();break;
+                            case 'barraslineas': graficar3(); break;
+                            case 'area': graficar4(); break;
+                            case 'pie':  graficar5();break;
+                        }
+                       
+                    }
+                    
+                </script>
+               
                     <!-- <input type="submit"/> -->
                     <!--Se debe poner un input de submit para que me envie los resultados
                     estos saldran en el url-->
@@ -293,19 +315,18 @@
     </div>
 
     <div >
-        
-
         <div class="grid-graphs" >
             <!--grafica de barras-->
-            <div class="content" id="top_x_div" ></div>
+            <div class="content box" id="top_x_div" ></div>
             <!--grafica de lineas-->
-            <div class="content" id="line_top_x"></div>
+            <div class="content box" id="line_top_x"></div>
             <!--grafica de barras con lineas-->
-            <div class="content" id="chart_div"></div>
+            <div class="content box" id="chart_div"></div>
+             <!-- grafica pie-->     
+             <div class="content box" id="piechart"></div>
             <!-- grafica de area-->    
             <div class="content" id="chart_div2" ></div>
-            <!-- grafica pie-->     
-            <div class="content" id="piechart"></div>
+           
             
         </div>
 

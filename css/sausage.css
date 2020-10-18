@@ -1,0 +1,8 @@
+.prueba{
+    display: flex;    
+    position: absolute;
+    box-sizing: border-box; 
+    align-items: right;
+    grid-auto-rows: inherit;
+    
+}
