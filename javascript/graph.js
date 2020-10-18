@@ -1,6 +1,29 @@
-new Morris.Line({
+var datos2 = Array();
+
+
+fetch('https://mindicador.cl/api/dolar').then(res=> res.json()).then(datos =>{
+    /*Esto es una promesa que agarra lo que viene de la API de una URL y luego al objeto JSON lo almacena en */
+    console.log(datos);
+});
+
+function tabla(datos){
+    var prueba = new Array(datos.serie.length)
+    //serie es el nombre del array donde se extrajeron los datos del json que uso para la graficación
+    
+    for(var j=0; j < datos.serie.length; j++){
+        var i = datos.serie
+        prueba[j] = [[`${i[j].fecha}`, Number.parseFloat(`${i[j].valor}`)]];            
+    }
+    datos2=prueba
+}
+
+
+
+//Si quiero luego manipular lo que haya dentro de mi gráfica, al objeto morris lo debo guardar en una variable
+let resultadoLineas = new Morris.Line({
 /*Creación de un objeto morris para hacer una gráfica de línea, si quiero que sea de barras pongo Morris.Bar({}), si 
 quiero que sea de pie pongo Morris.Donut*/
+
     element: 'resultCalcu', //Aquí pongo el id del elemento donde quiero que se ponga mi gráfica
     //Entre todas las propiedades se ponen comas
     data: [
@@ -38,11 +61,167 @@ quiero que sea de pie pongo Morris.Donut*/
     //Aquí pongo el nombre del elemento que quiero que se ponga en el eje vertical de mi gráfica
     resize: 'true',
     //Aquí pongo con true o false si quiero que mi gráfica se adpate al ancho de mi pantalla o no
-    lineColors: ['#15e6bc', '#fd004b']
-    //Aquí pongo el colo con el que quiero que se pinte cada elemento de mi gráfica
+    lineColors: ['#15e6bc', '#fd004b'],
+    //Aquí pongo el color con el que quiero que se pinte cada elemento de mi gráfica
+    lineWidth: 1
+    //Con esto le digo a mi gráfica que quiero que la línea sea delgada
 });
 
 
+
+/*Para que podamos cargar la data dinámicamente en el morris apretando un botón con una respectiva id, para ello ya debo 
+tener creado un botón con una id en el HTML, en este caso es un input con una id = mandar_datos*/
+
+//PRIMERO HAGO LA GRÁFICA (QUE ES UN OBJETO MORRIS.JS) Y LA GUARDO EN UNA VARIABLE
+let resultadoBarras = new Morris.Bar({
+/*Creación de un objeto morris para hacer una gráfica de línea, si quiero que sea de barras pongo Morris.Bar({}), si 
+quiero que sea de pie pongo Morris.Donut*/
+    element: 'resultCalcu2', //Aquí pongo el id del elemento donde quiero que se ponga mi gráfica
+    //Entre todas las propiedades se ponen comas
+    data: [
+        { año: '2000', valor1: 2 , valor2: '1'},
+        { año: '2001', valor1: 10 , valor2: '3'},
+        { año: '2002', valor1: 5 , valor2: '6'},
+        { año: '2003', valor1: 5 , valor2: '9'},
+        { año: '2004', valor1: 3 , valor2: '1'},
+        { año: '2005', valor1: 10 , valor2: '1'},
+        { año: '2006', valor1: 5 , valor2: '1'},
+        { año: '2007', valor1: 5 , valor2: '9'},
+        { año: '2008', valor1: 7 , valor2: '100'},
+        { año: '2009', valor1: 9 , valor2: '2'},
+        { año: '2010', valor1: 5 , valor2: '5'},
+        { año: '2011', valor1: 1 , valor2: '2'},
+        { año: '2012', valor1: 200 , valor2: '1'},
+        { año: '2013', valor1: 10 , valor2: '5'},
+        { año: '2014', valor1: 150 , valor2: '7'},
+        { año: '2015', valor1: 5 , valor2: '90'},
+        { año: '2016', valor1: 1 , valor2: '156'},
+        { año: '2017', valor1: 20 , valor2: '1'},
+        { año: '2018', valor1: 5 , valor2: '5'},
+        { año: '2019', valor1: 5 , valor2: '9'},
+        { año: '2020', valor1: 50 , valor2: '1'}
+    ], 
+    /*Aquí pongo la variable donde esté almacenada la data que quiero graficar, debe ser un array y puede ser del 
+    tamaño que sea los valores del eje y, pero en el eje x debe haber un mismo valor para los otros del eje horizontal*/
+    xkey: 'año',
+    //Aquí pongo el nombre del elemento en mi array que quiero que se ponga en el eje horizontal de mi gráfica
+    ykeys: ['valor1', 'valor2'],
+    //ykey: 'value',
+    /*Aquí pongo el nombre del elemento en mi array que quiero que se ponga en el eje vertical de mi gráfica, o si son 
+    2 valores como en este ejemplo, vamos a usar ykeys: [], en vez de ykey: */
+    labels: ['numero de PIBS', 'numero de perritous'],
+    //Aquí pongo el nombre del elemento que quiero que se ponga en el eje vertical de mi gráfica
+    resize: 'true',
+    //Aquí pongo con true o false si quiero que mi gráfica se adpate al ancho de mi pantalla o no
+    barColors: ['red', 'lightgray'],
+    //Aquí pongo el color con el que quiero que se pinte cada elemento de mi gráfica
+});
+
+
+
+// COMO ESTOY USANDO JQUERY PARA UTILIZAR LA LIBRERÍA MORRIS, PUEDO HACER USO DE UN ELEMENTO SUYO PARA CHECAR EL BOTÓN
+$("#mandar_datos").on("click", function() {
+/*Uso el signo de pesos para llamar un elemento con una id dentro del paréntesis, pongo # y el nombre del id del elemento 
+que quiero usar como botón, lo que está dentro de la función se va a ejecutar cuando yo dé clic en ese elemento*/
+    console.log('boton presionado');
+    console.log(resultadoBarras);
+    //Enseño en consola mi obeto morris con el que voy a cambiar el contenido de la gráfica
+
+    var nuevaDataBarras = [
+        {año: '2012', valor1: 100.5, valor2: 757.1},
+        {año: '2013', valor1: 567.1, valor2: 671.2},
+        {año: '2014', valor1: 789.3, valor2: 745.4},
+        {año: '2015', valor1: 609.5, valor2: 785.2},
+        {año: '2016', valor1: 893.1, valor2: 862.9},
+        {año: '2017', valor1: 809.1, valor2: 253.1},
+        {año: '2018', valor1: 1010.7, valor2: 286.5}
+    ]; 
+    /*Creo un nuevo array donde declaro la nueva data que quiero meter al programa, los nombres de cada elemento en 
+    este array se debe llamar igual que el de arriba para que se pueda actualizar la data*/
+
+    resultadoBarras.setData(nuevaDataBarras);
+    /*Para hacer referencia a la gráfica que quiero acceder, debo usar el objeto morris, que es la gráfica como tal 
+    recordemos que el objeto lo habíamos guardado en una variable llamada resultadoBarras y usaremos el método setData 
+    que es una función de la librería de Morris.js para mandar datos a una gráfica*/
+});
+
+
+
+
+$("#mandar_datos").on("click", function() {
+/*Uso el signo de pesos para llamar un elemento con una id dentro del paréntesis, pongo # y el nombre del id del elemento 
+que quiero usar como botón, lo que está dentro de la función se va a ejecutar cuando yo dé clic en ese elemento*/
+    console.log('boton presionado');
+    console.log(resultadoLineas);
+    //Enseño en consola mi obeto morris con el que voy a cambiar el contenido de la gráfica
+
+    var nuevaDataLineas = [
+        {year: '2012', value: 100.5, elValor2: 757.1},
+        {year: '2013', value: 567.1, elValor2: 671.2},
+        {year: '2014', value: 789.3, elValor2: 745.4},
+        {year: '2015', value: 609.5, elValor2: 785.2},
+        {year: '2016', value: 893.1, elValor2: 862.9},
+        {year: '2017', value: 809.1, elValor2: 253.1},
+        {year: '2018', value: 1010.7, elValor2: 286.5}
+    ]; 
+    /*Creo un nuevo array donde declaro la nueva data que quiero meter al programa, los nombres de cada elemento en 
+    este array se debe llamar igual que el de arriba para que se pueda actualizar la data*/
+
+    resultadoLineas.setData(nuevaDataLineas);
+    /*Para hacer referencia a la gráfica que quiero acceder, debo usar el objeto morris, que es la gráfica como tal 
+    recordemos que el objeto lo habíamos guardado en una variable llamada resultadoBarras y usaremos el método setData 
+    que es una función de la librería de Morris.js para mandar datos a una gráfica*/
+});
+//NO PUEDO PONER DOS GRÁFICAS DIFERENTES EN EL MISMO ELEMENTO HTML
+
+
+// function operadores(){
+//     var opps = " ";
+//     var oppsFinal = " ";
+//     var numUno = 0;
+//     var numDos = 0;
+//     var resultado = 0;
+//     var numUnoInt = 0;
+//     var numDosInt = 0;
+//     /*Variables inicializadas*/
+//     opps=document.getElementById('operaciones');
+//     /*Lee todo el codigo HTML del elemento que tenga Id operaciones, osea mi
+//     select*/
+//     oppsFinal = opps.options[operaciones.selectedIndex].value;
+//     /*Lee todo lo almacenado en mi variable opps y le asigna en especifico el
+//     value del elemento al que le hayan hecho click a mi variable oppsFinal*/
+//     numUno = document.getElementById('num1').value;
+//     numDos = document.getElementById('num2').value;
+//     /*Obtiene el value de lo que haya introducido en mis inputs*/
+//     var numUnoInt = parseInt(numUno, 10);
+//     var numDosInt = parseInt(numDos, 10);
+//     /*Con esto convierto cualquier valor que me regresen en el value mis inputs
+//     porque al hacer la suma como el programa mismo se adapta a lo que le pida
+//     en la suma me hara una concatenacion si lo dejo sin el parseInt pero las
+//     demas operaciones si las hará bien*/
+//     if (oppsFinal=="suma"){
+//       resultado=numUnoInt+numDosInt;
+//       console.log("El resultado de tu suma es: " + resultado);
+//     }
+//     /*If para suma usando numUno, numDos y oppsFinal*/
+//     if (oppsFinal=="resta"){
+//       resultado=numUnoInt-numDosInt;
+//       console.log("El resultado de tu resta es: " + resultado);
+//     }
+//     /*If para resta usando numUno, numDos y oppsFinal*/
+//     if (oppsFinal=="multiplicacion"){
+//       resultado=numUnoInt*numDosInt;
+//       console.log("El resultado de tu multiplicación es: " + resultado);
+//     }
+//     /*If para multiplicación usando numUno, numDos y oppsFinal*/
+//     if (oppsFinal=="division"){
+//       resultado=numUnoInt/numDosInt;
+//       console.log("El resultado de tu división es: " + resultado);
+//     }
+//     /*If para división usando numUno, numDos y oppsFinal*/
+//     /*Tener un chingo de cuidado con el operador logico igual a porque me puedo
+//     confundir y poner un simple "=" cuando en realidad tiene que ser "=="*/
+//   }
 
 
 

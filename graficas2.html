@@ -103,11 +103,11 @@
                     Gráfica de pie
                 </label>
                 
-                <div class="btn-group-toggle" data-toggle="buttons">
+                <!-- <div class="btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary active" style="width: 90%; margin: 5%;">
-                        <input type="checkbox" onclick="traer()"> Checked
+                        <input type="checkbox"> Checked
                     </label>  
-                </div>
+                </div> -->
                     <!-- <input type="submit"/> -->
                     <!--Se debe poner un input de submit para que me envie los resultados
                     estos saldran en el url-->
@@ -161,16 +161,13 @@
 
     <!-- Creación de gráficas con google charts -->
     <script>
-        var contenido = document.querySelector('#contenido')
         var datos2 = Array()
         
-        function traer(){
-            fetch('https://mindicador.cl/api/dolar')
-            .then(res=> res.json())
-            .then(datos =>{
-            tabla(datos)
-            })
-        }  
+        fetch('https://mindicador.cl/api/dolar')
+        .then(res=> res.json())
+        .then(datos =>{
+        tabla(datos)
+        })  
 
         function tabla(datos){
             var prueba = new Array(datos.serie.length)
