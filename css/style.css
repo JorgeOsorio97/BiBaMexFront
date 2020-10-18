@@ -1,10 +1,12 @@
 
 .sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
+  margin: 0px;
+  padding-top: 20%;
+  width: 20%;
   background-color: #f1f1f1;
   position: fixed;
+  top: 0;
+  left: 0;
   height: 100%;
   overflow-y: auto;
 }
@@ -93,12 +95,6 @@ body{
   min-width: 980px;
   min-height: 750px;
   background-color: #122d30;
-}
-
-svg{
-  margin: 50px;
-  height: 600px;
-  width: 80%;
 }
 
 #loader-wrapper{
@@ -501,7 +497,6 @@ productos*/
 :root{
   --gradienteAzul: linear-gradient(
         to right,
-        white,
         rgb(196, 231, 255),
         #26C2F1,
         #00ADED,
@@ -644,7 +639,7 @@ productos*/
 
 #productGroup{
   width: 100%; 
-  height: 1500px;
+  height: 500px;
   display: flex;
   justify-content: flex-start; 
   align-items: center; 
@@ -654,7 +649,7 @@ productos*/
 
 #productCatalogue{
   width: 100%; 
-  height: 1670px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
+  height: 570px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
   display: flex; 
   flex-direction: column; 
   justify-content: space-between;
@@ -671,9 +666,29 @@ productos*/
   animation-direction: alternate;/*Se alterna la dirección de la animación*/
 }
 
+#graphCatalogue{
+  width: 100%; 
+  padding: 5%;
+  height: 1750px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /*Animación de fondo de color cambiante*/
+  background-image: var(--gradienteAzul);
+  background-size: 300%;
+  background-position: left;
+  /*Ejecución de animación*/
+  animation-name: efectoColorFondo;/*Con esto hago que se ejecute la animación efectoColorFondo*/
+  animation-duration: 20s;/*Se usa para indicar el tiempo que tardará toda la simulación en ejecutarse*/
+  animation-iteration-count: infinite;/*Sirve para especificar cuántas veces se va a ejecutar mi animación*/
+  animation-timing-function: ease-in;/*Especifica un efecto de animación con un inicio lento solamente*/
+  animation-direction: alternate;/*Se alterna la dirección de la animación*/
+}
+
 #calcuGraph{
   width: 100%; 
-  height: 670px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
+  height: 800px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
   display: flex; 
   flex-direction: column; 
   justify-content: space-between;
@@ -709,16 +724,16 @@ productos*/
   animation-direction: alternate;/*Se alterna la dirección de la animación*/
 }
 
-#graphResultCalcu{
+#resultCalcu{
   background-color: #F9F9F9; 
-  width: 80%; 
+  width: 80%;
   height: 500px; 
   margin: 5%;
 }
 
 .productsContainer{
   width: 285px;
-  height: 315px;
+  height: 350px;
   margin: 1%;
   display: flex;
   justify-content: center;
@@ -728,7 +743,7 @@ productos*/
 .efectoImagenTexto{
   width: 95%;
   border: #d3d2d2 2px solid;
-  height: 300px;
+  height: 335px;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -744,7 +759,7 @@ productos*/
   content: '';
   position: absolute;
   top: 5%;
-  bottom: 22%;
+  bottom: 33%;
   left: 5%;
   right: 5%;
   border-top: solid #a8a8a8 1px;
@@ -760,7 +775,7 @@ productos*/
   content: '';
   position: absolute;
   top: 5%;
-  bottom: 22%;
+  bottom: 33%;
   left: 5%;
   right: 5%;
   border-left: solid #a8a8a8 1px;
@@ -784,7 +799,7 @@ productos*/
 .efectoImagenTextoContornoClaro{
   width: 95%;
   border: #d3d2d2 2px solid;
-  height: 300px;
+  height: 335px;
   display: flex;
   background-color: white;
   justify-content: space-between;
@@ -838,7 +853,7 @@ productos*/
 }
 
 #productsToTheLeft{
-  margin-left: 2%;
+  margin-left: 5%;
 }
 
 #productsToTheRight{
@@ -859,8 +874,9 @@ productos*/
 
 #visualizerLogoContainer{
   background-color: #F9F9F9; 
-  width: 15%; 
-  height: 500px; 
+  width: 13%; 
+  padding: 2%;
+  height: 450px; 
   display: flex; 
   align-items: flex-end; 
   justify-content: center;
@@ -878,7 +894,7 @@ productos*/
 }
 
 #visualizerContainer{
-  width: 45%; 
+  width: 50%; 
   height: 400px; 
   display: flex; 
   align-items: center; 
@@ -891,7 +907,7 @@ productos*/
   width: 100%; 
   height: 80px; 
   color: white; 
-  font-size: 50px; 
+  font-size: 45px; 
   font-family: Anton-Regular;
 }
 
@@ -948,7 +964,7 @@ productos*/
   border: #0579C2 2px solid;
 }
 #visualizerButton:hover::before{
-  height: 700%;
+  height: 900%;
 }
 
 #clientsContainer{
@@ -989,6 +1005,8 @@ productos*/
   font-size: 17px;
   font-family: OpenSans-Regular; 
   padding-left: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 #legalBarImage{
@@ -3377,6 +3395,9 @@ Las media queries se deben poner siempre después del id o class al que se está
   #navbarLogo{
     width: 15%;
   }
+  .sidebar {
+    padding-top: 25%;
+  }
   #navbarMenu{
     display: none;
   }
@@ -3437,10 +3458,10 @@ Las media queries se deben poner siempre después del id o class al que se está
     height: 90vh;
   }
   #productGroup{
-    height: 1750px;
+    height: 750px;
   }
   #productCatalogue{
-    height: 1920px;
+    height: 920px;
   }
   #productsToTheLeft{
     margin-left: 1%;

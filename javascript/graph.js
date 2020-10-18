@@ -1,7 +1,7 @@
 new Morris.Line({
 /*Creación de un objeto morris para hacer una gráfica de línea, si quiero que sea de barras pongo Morris.Bar({}), si 
 quiero que sea de pie pongo Morris.Donut*/
-    element: 'graphResultCalcu', //Aquí pongo el id del elemento donde quiero que se ponga mi gráfica
+    element: 'resultCalcu', //Aquí pongo el id del elemento donde quiero que se ponga mi gráfica
     //Entre todas las propiedades se ponen comas
     data: [
         { year: '2000', value: 2 , elValor2: '1'},
@@ -34,11 +34,11 @@ quiero que sea de pie pongo Morris.Donut*/
     //ykey: 'value',
     /*Aquí pongo el nombre del elemento en mi array que quiero que se ponga en el eje vertical de mi gráfica, o si son 
     2 valores como en este ejemplo, vamos a usar ykeys: [], en vez de ykey: */
-    labels: ['Pepsi', 'Coca Cola'],
+    labels: ['Saldo vigente al mes', 'Variación de saldo'],
     //Aquí pongo el nombre del elemento que quiero que se ponga en el eje vertical de mi gráfica
     resize: 'true',
     //Aquí pongo con true o false si quiero que mi gráfica se adpate al ancho de mi pantalla o no
-    labels: ['blue', 'red']
+    lineColors: ['#15e6bc', '#fd004b']
     //Aquí pongo el colo con el que quiero que se pinte cada elemento de mi gráfica
 });
 
