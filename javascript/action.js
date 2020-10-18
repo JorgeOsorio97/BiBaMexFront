@@ -78,7 +78,22 @@ console.log(topojson);
 
     let statesURL = 'https://gist.githubusercontent.com/diegovalle/10487038/raw/e7e6d9db45129dca85d4142860fe15a75aea1f58/national.json';
     console.log(statesURL);
-    let backendHackathon2020URL = "";
+    let backendHackathon2020URL = {
+        fips: 797010,
+        estado: "rox",
+        municipio: "municipio",
+        valor_principal: 0.5,
+        otros_valores: [
+                {
+                    nombre: "TC",
+                    valor: 5,
+                },
+                {
+                    nombre: "PIB",
+                    valor: 3,
+                },
+            ],
+        };
 
     let stateData;
     let backendHackathon2020Data;
@@ -111,6 +126,7 @@ console.log(topojson);
                     1.- data, que es el objeto topojson
                     2.- la información clave que queremos obtener del json*/
                 stateData = topojson.feature(data, data.objects.counties).features;
+                
                 //Del objeto geojson solo nos importa la parte de features y no el resto del array
                 console.log(stateData); //con esto puedo ver lo que hay en el topojson que llegó de la variable statesURL
                 

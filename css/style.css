@@ -27,7 +27,14 @@
   position: static;
   align-content: initial;
   align-items: left; 
+
   border-style: hidden;
+
+}
+.content-box {
+  box-sizing: border-box; 
+  width: 1000px;
+  align-items: right;
 
 }
 
@@ -1442,7 +1449,7 @@ productos*/
 #productContainerItem1{
   background-color: #F9F9F9;
   width: 100%; 
-  height: 85vh; 
+  height: 90vh; 
   display: flex; 
   justify-content: center; 
   align-items: flex-start;
