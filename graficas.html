@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
      <!-- Graficos -->
-     <script>
+     <script type="text/javascript">
         var contenido = document.querySelector('#contenido')
         var datos2 = Array()
         
@@ -43,7 +43,7 @@
             
             datos2=prueba
         } 
-        
+       
         function graficar()
         {
             //librerias para barras. 
@@ -52,9 +52,6 @@
 
             //grafica barras
             function drawStuff() {
-
-                //console.log(Number.parseFloat(datos2[1][0][1]))
-
                 var data = new google.visualization.DataTable();
                 //tipo de dato, y el dato
                 data.addColumn('string', 'fecha');
