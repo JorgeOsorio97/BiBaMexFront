@@ -93,17 +93,14 @@ body{
     padding: 0px;
 }
 
-svg{
+#canvas{
+  min-width: 980px;
+  min-height: 750px;
   background-color: #122d30;
   margin: 50px;
   border: solid 1px white;
   height: 600px;
   width: 80%;
-}
-
-#canvas{
-  min-width: 980px;
-  min-height: 750px;
 }
 
 #loader-wrapper{
@@ -467,16 +464,20 @@ svg{
 }
 
 #thirdSectionSubtitle{ 
-  width: 95%; 
-  height: 50vh; 
+  width: 95%;
+  height: 55vh; 
   font-family: FjallaOne; 
-  font-size: 5rem;
+  font-size: 7rem;
   font-weight: lighter; 
   letter-spacing: 1px; 
   word-spacing: 10px; 
-  line-height: 80px; 
+  line-height: 100px; 
   color: #272227; 
   padding-left: 5%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 #thirdSectionText{ 
@@ -515,6 +516,35 @@ productos*/
         #000936,
         #02001a,
         black
+    );
+}
+
+:root{
+  --gradienteCalcu: linear-gradient(
+        45deg,
+        rgb(109, 197, 255),
+        #26C2F1,
+        #00ADED,
+        #0579C2,
+        rgb(15, 77, 163),
+        #1C4175,
+        rgb(14, 44, 85),
+        #1a2457,
+        #302e7c,
+        #432e7c,
+        #632c6e,
+        #854566,
+        #c22b5b,
+        #D10157,
+        #E50750,
+        #FD004B,
+        #FA5B46,
+        #FFAD77,
+        #FEF481,
+        #bdfbf6,
+        #deeffd,
+        #8fccff,
+        #4aaeff
     );
 }
 
@@ -585,6 +615,21 @@ productos*/
   justify-content: center;
 }
 
+#calcuGraphTitle{
+  background-image: linear-gradient(to bottom, #ffffff, #9c9c9c);
+  padding-right: 8%;
+  width: 92%;
+  border-bottom: 1px solid white; 
+  height: 100px;
+  font-family: FjallaOne; 
+  font-size: 50px; 
+  color: #272227;
+  letter-spacing: 0.1px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end;
+}
+
 #heatmap{
   background-color: #07171B;
   width: 53%;
@@ -628,6 +673,25 @@ productos*/
   animation-direction: alternate;/*Se alterna la dirección de la animación*/
 }
 
+#calcuGraph{
+  width: 100%; 
+  height: 670px;/*350px(de cada grupo)*4 + 100px(del título) + 200px(extras) = 1700px*/
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between;
+  align-items: center;
+  /*Animación de fondo de color cambiante*/
+  background-image: var(--gradienteCalcu);
+  background-size: 600%;
+  background-position: left;
+  /*Ejecución de animación*/
+  animation-name: efectoColorFondo;/*Con esto hago que se ejecute la animación efectoColorFondo*/
+  animation-duration: 50s;/*Se usa para indicar el tiempo que tardará toda la simulación en ejecutarse*/
+  animation-iteration-count: infinite;/*Sirve para especificar cuántas veces se va a ejecutar mi animación*/
+  animation-timing-function: ease-in;/*Especifica un efecto de animación con un inicio lento solamente*/
+  animation-direction: alternate;/*Se alterna la dirección de la animación*/
+}
+
 #graph{
   width: 100%; 
   height: 1000px;
@@ -645,6 +709,13 @@ productos*/
   animation-iteration-count: infinite;/*Sirve para especificar cuántas veces se va a ejecutar mi animación*/
   animation-timing-function: ease-in;/*Especifica un efecto de animación con un inicio lento solamente*/
   animation-direction: alternate;/*Se alterna la dirección de la animación*/
+}
+
+#graphResultCalcu{
+  background-color: #F9F9F9; 
+  width: 80%; 
+  height: 500px; 
+  margin: 5%;
 }
 
 .productsContainer{
@@ -3200,9 +3271,10 @@ productos*/
   text-align: center;
 }
 
-#emailPhone{
-  width: 100%; 
+#resultGraph{
+  width: 90%;
   height: 15vh;
+  text-align: center;
   font-family: OpenSansCondensed; 
   font-size: 20px; 
   color: #797979; 

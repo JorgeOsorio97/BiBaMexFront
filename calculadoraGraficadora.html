@@ -21,8 +21,12 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!--JQuery y arhivos de cloudfare para el efecto de loading-->
     <link rel="stylesheet" href="morris/morris.css">
-    <link rel="stylesheet" href="morris/morris.min.js">
+    <script type="text/javascript" src="morris/morris.min.js"></script>
     <!--Conexión con la librería morris.js-->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- IMPORTACIÓN DE LA LIBRERÍA D3.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <!-- IMPORTACIÓN DE LA LIBRERÍA TOPOJSON DE CLOUDFARE -->
 </head>
 <body>
     <div id="navbar-container">
@@ -38,14 +42,14 @@
                     <a href="index.html" class="menuButton2">
                         Inicio
                     </a>
-                    <a href="calculadoraGraficadora.html" class="menuButton2">
+                    <a href="calculadoraGraficadora.html" id="menuButton1">
                         Calculadora/Graficadora
                     </a>
                     <a href="heatmap.html" class="menuButton2">
                         Heatmap
                     </a>
-                    <a href="noticias.html" class="menuButton2">
-                        Noticias
+                    <a href="graficas.html" class="menuButton1">
+                        Gráficas
                     </a>
                 </div>
             </div>
@@ -69,7 +73,7 @@
     <div id="productContainerItem1">
         <div id="productSubcontainerItem1">
             <div id="menuOptionDisplay1">
-                <div id="productMenuOption1" style="border-left: none;"> 
+                <div id="productMenuOption1" style="border-left: none;">
                     Ingresa tus KPI´s por medio de nuestra base de datos y manipúlalos usando las trasnformaciones y operandos de la calculadora.
                 </div>
             </div>
@@ -188,8 +192,9 @@
                         </button>
                     </div>
                     <p style="height: 50px; width: 90%; font-family: OpenSansCondensed; display: flex; align-items: center; border-bottom: #e2e2e2 solid 1px;">
-                        <label for="telefono_numero" style="font-family: OpenSansCondensed; font-size: 18px; color: #222222; letter-spacing: 4px; padding-left: 2%;">RESULTADO: </label>
-                        <input type="number" disabled="true" id="resultadoCalculadora" name="resultadoCalculadora" placeholder="" style="width: 90%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; color: #222222; border: none; letter-spacing: 4px; padding-left: 2%;">
+                        <div id="resultGraph">
+                            AL DAR CLIC EN EL BOTÓN DE IGUAL, PODREMOS VISUALIZAR NUESTRO RESULTADO GRAFICADO DEBAJO
+                        </div>
                     </p>
                 </div>
             </div>
@@ -197,12 +202,13 @@
         </div>
     </div>
     <!-- Descripción específica de producto -->
-    <div id="productCatalogue">
-        <div id="productCatalogueTitle" style="width: 100%;">
+    <div id="calcuGraph">
+        <div id="calcuGraphTitle">
             GRÁFICA RESULTANTE DE LA OPERACIÓN EFECUTADA
         </div>
+        <div id="graphResultCalcu">
         
-        <div style="background-color: #F9F9F9; width: 100%; height: 5px;"></div>
+        </div>
     </div>
     <!-- Gráfica de resultados en la calculadora -->
     <div style="width: 100%; height: 112px;">
@@ -230,7 +236,7 @@
         });
     </script>
     <!-- Loading efect -->
-    <script type="text/javascript" src="javascript/action.js"></script>
+    <script type="text/javascript" src="javascript/graph.js"></script>
     <!-- CONEXIÓN CON DOCUMENTO DE EFECTOS JAVASCRIPT -->
 </body>
 </html>
