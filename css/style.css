@@ -3290,6 +3290,7 @@ productos*/
   align-items: flex-start; 
   letter-spacing: 3px; 
   padding-top: 10px;
+  display: none;
 }
 
 #contact_data{
@@ -3361,7 +3362,7 @@ input[type=text]{
   border: solid 2px salmon;
   font-family: OpenSansCondensed;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
   letter-spacing: 4px;
   /*Aquí mandaré a llamar mi variable tipo gradiente de colores, esto lo debo hacer usando la instrucción 

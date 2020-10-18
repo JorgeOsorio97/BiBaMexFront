@@ -1,24 +1,3 @@
-var datos2 = Array();
-
-
-fetch('https://mindicador.cl/api/dolar').then(res=> res.json()).then(datos =>{
-    /*Esto es una promesa que agarra lo que viene de la API de una URL y luego al objeto JSON lo almacena en */
-    console.log(datos);
-});
-
-function tabla(datos){
-    var prueba = new Array(datos.serie.length)
-    //serie es el nombre del array donde se extrajeron los datos del json que uso para la graficación
-    
-    for(var j=0; j < datos.serie.length; j++){
-        var i = datos.serie
-        prueba[j] = [[`${i[j].fecha}`, Number.parseFloat(`${i[j].valor}`)]];            
-    }
-    datos2=prueba
-}
-
-
-
 //Si quiero luego manipular lo que haya dentro de mi gráfica, al objeto morris lo debo guardar en una variable
 let resultadoLineas = new Morris.Line({
 /*Creación de un objeto morris para hacer una gráfica de línea, si quiero que sea de barras pongo Morris.Bar({}), si 
@@ -146,11 +125,92 @@ que quiero usar como botón, lo que está dentro de la función se va a ejecutar
 });
 
 
+//FUNCIÓN PARA DESPLEGAR MENÚ RESPONSIVO
+function displayMenuMobile(){ 
+    var click = document.getElementById("navbarMenu").style.display;
+    if(click == "none"){
+        document.getElementById("navbarMenu").style.display= "block";
+        document.getElementById("navbarMenu").style.top= "100%";
+        document.getElementById("navbarMenu").style.left= "60%";
+        document.getElementById("navbarMenu").style.width= "37vw";
+        document.getElementById("navbarMenu").style.height= "50vh";
+        document.getElementById("navbarMenu").style.zIndex= "5";
+        document.getElementById("menuButton1").style.width= "98%";
+        var botones = document.getElementsByClassName("menuButton2");
+        for (let i = 0; i < botones.length; i++) {
+            botones[i].style.width ="100%";
+        }
+    } else{
+        document.getElementById("navbarMenu").style.display= "none";
+    }
+}
 
+var operacionNegrou = '';
+var operacionUsuario = '';
+var operacionCounter = '';
+
+function borrar(){
+    operacionNegrou = '';
+    operacionUsuario = '';
+    console.log("operacionNegrou = " + operacionNegrou + ", operacionUsuario = " + operacionUsuario);
+    operacionCounter = 0;
+}
+
+$('#BD').change(function(){
+    var indicador_id = $(this).val();
+    console.log(indicador_id);
+    operacionNegrou += indicador_id;
+    operacionCounter++;
+    
+    if(operacionCounter > 2){
+        $('#resultGraph').toggle();
+        operacionNegrou = '';
+        operacionUsuario = '';
+        operacionCounter = 0;
+    }
+    document.getElementsByName("operacionEnProceso")[0].value = operacionUsuario;
+});
+
+$('#BD').change(function(){
+    var nombreKPI = $("#BD option:selected").html();
+    console.log(nombreKPI);
+    operacionUsuario += nombreKPI + " ";
+});
+
+$('#estadoMX').change(function(){
+    var estadoMexNegrou = $(this).val();
+    console.log(estadoMexNegrou);
+});
+
+$("#division").on("click", function(){
+    operacionNegrou += " / ";
+    operacionUsuario += " / ";
+    console.log("operacionNegrou = " + operacionNegrou + ", operacionUsuario = " + operacionUsuario);
+    document.getElementsByName("operacionEnProceso")[0].value = operacionUsuario;
+});
+$("#multiplicacion").on("click", function(){
+    operacionNegrou += " * ";
+    operacionUsuario += " * ";
+    console.log("operacionNegrou = " + operacionNegrou + ", operacionUsuario = " + operacionUsuario);
+    document.getElementsByName("operacionEnProceso")[0].value = operacionUsuario;
+});
+$("#resta").on("click", function(){
+    operacionNegrou += " - ";
+    operacionUsuario += " - ";
+    console.log("operacionNegrou = " + operacionNegrou + ", operacionUsuario = " + operacionUsuario);
+    document.getElementsByName("operacionEnProceso")[0].value = operacionUsuario;
+});
+$("#suma").on("click", function(){
+    operacionNegrou += " + ";
+    operacionUsuario += " + ";
+    console.log("operacionNegrou = " + operacionNegrou + ", operacionUsuario = " + operacionUsuario);
+    document.getElementsByName("operacionEnProceso")[0].value = operacionUsuario;
+});
 
 $("#mandar_datos").on("click", function() {
-/*Uso el signo de pesos para llamar un elemento con una id dentro del paréntesis, pongo # y el nombre del id del elemento 
-que quiero usar como botón, lo que está dentro de la función se va a ejecutar cuando yo dé clic en ese elemento*/
+    /*Uso el signo de pesos para llamar un elemento con una id dentro del paréntesis, pongo # y el nombre del id del 
+    elemento que quiero usar como botón, lo que está dentro de la función se va a ejecutar cuando yo dé clic en ese 
+    elemento*/
     console.log('boton presionado');
     console.log(resultadoLineas);
     //Enseño en consola mi obeto morris con el que voy a cambiar el contenido de la gráfica
@@ -171,76 +231,6 @@ que quiero usar como botón, lo que está dentro de la función se va a ejecutar
     /*Para hacer referencia a la gráfica que quiero acceder, debo usar el objeto morris, que es la gráfica como tal 
     recordemos que el objeto lo habíamos guardado en una variable llamada resultadoBarras y usaremos el método setData 
     que es una función de la librería de Morris.js para mandar datos a una gráfica*/
+    document.getElementsByName("operacionEnProceso")[0].value = operacionUsuario;
 });
 //NO PUEDO PONER DOS GRÁFICAS DIFERENTES EN EL MISMO ELEMENTO HTML
-
-
-// function operadores(){
-//     var opps = " ";
-//     var oppsFinal = " ";
-//     var numUno = 0;
-//     var numDos = 0;
-//     var resultado = 0;
-//     var numUnoInt = 0;
-//     var numDosInt = 0;
-//     /*Variables inicializadas*/
-//     opps=document.getElementById('operaciones');
-//     /*Lee todo el codigo HTML del elemento que tenga Id operaciones, osea mi
-//     select*/
-//     oppsFinal = opps.options[operaciones.selectedIndex].value;
-//     /*Lee todo lo almacenado en mi variable opps y le asigna en especifico el
-//     value del elemento al que le hayan hecho click a mi variable oppsFinal*/
-//     numUno = document.getElementById('num1').value;
-//     numDos = document.getElementById('num2').value;
-//     /*Obtiene el value de lo que haya introducido en mis inputs*/
-//     var numUnoInt = parseInt(numUno, 10);
-//     var numDosInt = parseInt(numDos, 10);
-//     /*Con esto convierto cualquier valor que me regresen en el value mis inputs
-//     porque al hacer la suma como el programa mismo se adapta a lo que le pida
-//     en la suma me hara una concatenacion si lo dejo sin el parseInt pero las
-//     demas operaciones si las hará bien*/
-//     if (oppsFinal=="suma"){
-//       resultado=numUnoInt+numDosInt;
-//       console.log("El resultado de tu suma es: " + resultado);
-//     }
-//     /*If para suma usando numUno, numDos y oppsFinal*/
-//     if (oppsFinal=="resta"){
-//       resultado=numUnoInt-numDosInt;
-//       console.log("El resultado de tu resta es: " + resultado);
-//     }
-//     /*If para resta usando numUno, numDos y oppsFinal*/
-//     if (oppsFinal=="multiplicacion"){
-//       resultado=numUnoInt*numDosInt;
-//       console.log("El resultado de tu multiplicación es: " + resultado);
-//     }
-//     /*If para multiplicación usando numUno, numDos y oppsFinal*/
-//     if (oppsFinal=="division"){
-//       resultado=numUnoInt/numDosInt;
-//       console.log("El resultado de tu división es: " + resultado);
-//     }
-//     /*If para división usando numUno, numDos y oppsFinal*/
-//     /*Tener un chingo de cuidado con el operador logico igual a porque me puedo
-//     confundir y poner un simple "=" cuando en realidad tiene que ser "=="*/
-//   }
-
-
-
-//FUNCIÓN PARA DESPLEGAR MENÚ RESPONSIVO
-function displayMenuMobile(){ 
-    var click = document.getElementById("navbarMenu").style.display;
-    if(click == "none"){
-        document.getElementById("navbarMenu").style.display= "block";
-        document.getElementById("navbarMenu").style.top= "100%";
-        document.getElementById("navbarMenu").style.left= "60%";
-        document.getElementById("navbarMenu").style.width= "37vw";
-        document.getElementById("navbarMenu").style.height= "50vh";
-        document.getElementById("navbarMenu").style.zIndex= "5";
-        document.getElementById("menuButton1").style.width= "98%";
-        var botones = document.getElementsByClassName("menuButton2");
-        for (let i = 0; i < botones.length; i++) {
-            botones[i].style.width ="100%";
-        }
-    } else{
-        document.getElementById("navbarMenu").style.display= "none";
-    }
-}

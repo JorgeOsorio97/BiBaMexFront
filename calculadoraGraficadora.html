@@ -86,23 +86,21 @@
                         </div>
                         <div style="padding-left: 15px; margin-right: 100px; border: 1px groove rgba(180,180,180,0.15); background-color: white; margin:0px;width: 300px;">
                             <div>
-                                <select id="estado" class="searcher">
-                                    <option value="Aguascalientes">Saldo Vigente al cierre de mes</option>
-                                    <option value="Baja California">Variación de saldo </option>
-                                    <option value="Baja California Sur">Participación de Mercado</option>
-                                    <option value="Campeche">Variación de cuota</option>
+                                <select id="BD" class="searcher">
+                                    
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div style="width: 90%;height: 110px;padding: 10px; margin: 10px; display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
                         <div id="individualProductTitle1">
-                            Transformaciones:
+                            Estado:
                         </div>
                         <div style="padding-left: 15px; margin-right: 100px; border: 1px groove rgba(180,180,180,0.15); background-color: white; margin:0px;width: 300px;">
                             <div>
-                                <select id="estado" class="searcher">
-                                    <option value="Aguascalientes">Crecimiento aritmético</option>
+                                <select id="estadoMX" class="searcher">
+                                    <option value="Pais">País (todos los estados)</option>
+                                    <option value="Aguascalientes">Aguascalientes</option>
                                     <option value="Baja California">Baja California</option>
                                     <option value="Baja California Sur">Baja California Sur</option>
                                     <option value="Campeche">Campeche</option>
@@ -116,30 +114,30 @@
                                     <option value="Guerrero">Guerrero</option>
                                     <option value="Hidalgo">Hidalgo</option>
                                     <option value="Jalisco">Jalisco</option>
-                                    <option value="Estado de México">Estado de México</option>
-                                    <option value="Michoacán">Michoacán</option>
+                                    <option value="Estado de Mexico">Estado de México</option>
+                                    <option value="Michoacan">Michoacán</option>
                                     <option value="Morelos">Morelos</option>
                                     <option value="Nayarit">Nayarit</option>
-                                    <option value="Nuevo León">Nuevo León</option>
+                                    <option value="Nuevo Leon">Nuevo León</option>
                                     <option value="Oaxaca">Oaxaca</option>
                                     <option value="Puebla">Puebla</option>
-                                    <option value="Querétaro">Querétaro</option>
+                                    <option value="Queretaro">Querétaro</option>
                                     <option value="Quintana Roo">Quintana Roo</option>
-                                    <option value="San Luis Potosí">San Luis Potosí</option>
+                                    <option value="San Luis Potosi">San Luis Potosí</option>
                                     <option value="Sinaloa">Sinaloa</option>
                                     <option value="Sonora">Sonora</option>
                                     <option value="Tabasco">Tabasco</option>
                                     <option value="Tamaulipas">Tamaulipas</option>
                                     <option value="Tlaxcala">Tlaxcala</option>
                                     <option value="Veracruz">Veracruz</option>
-                                    <option value="Yucatán">Yucatán</option>
+                                    <option value="Yucatan">Yucatán</option>
                                     <option value="Zacatecas">Zacatecas</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <button id="botonFun2">
-                        ENVIAR A LA CALCULADORA
+                    <button id="botonFun2" onclick="borrar()">
+                        BORRAR
                     </button>
                 </div>
                 <div id="standardMenu1">
@@ -147,25 +145,25 @@
                         HAGA OPERACIONES CON SUS KPI´S *
                     </div>
                     <p style="height: 50px; width: 90%; font-family: OpenSansCondensed; display: flex; align-items: center; border-bottom: #e2e2e2 solid 1px;">
-                        <input type="text" id="nombre" disabled="true" name="nombre" placeholder="VARIABLES *" style="width: 90%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; border: none; letter-spacing: 4px; padding-left: 2%;">&nbsp;&nbsp;<input type="submit" id="mandar_datos" name="mandar_datos" value="=" style="width: 10%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; border: none; letter-spacing: 4px;">
+                        <input type="text" id="operacionEnProceso" disabled="true" name="operacionEnProceso" placeholder="VARIABLES *" style="width: 90%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; border: none; letter-spacing: 4px; padding-left: 2%;">&nbsp;&nbsp;<input type="submit" id="mandar_datos" name="mandar_datos" value="=" style="width: 10%; height: 40px; font-family: OpenSansCondensed; font-size: 18px; border: none; letter-spacing: 4px;">
                     </p>
                     <div style="width: 90%; height: 100px; display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
-                        <button class="mathButton">
+                        <button class="mathButton" id="division">
                             ÷
                         </button>
-                        <button class="mathButton">
+                        <button class="mathButton" id="multiplicacion">
                             ×
                         </button>
-                        <button class="mathButton">
+                        <button class="mathButton" id="resta">
                             −
                         </button>
-                        <button class="mathButton">
+                        <button class="mathButton" id="suma">
                             +
                         </button>
                     </div>
                     <p style="height: 50px; width: 90%; font-family: OpenSansCondensed; display: flex; align-items: center; border-bottom: #e2e2e2 solid 1px;">
                         <div id="resultGraph">
-                            AL DAR CLIC EN EL BOTÓN DE IGUAL, PODREMOS VISUALIZAR NUESTRO RESULTADO GRAFICADO DEBAJO
+                            POR EL MOMENTO NO PODEMOS HACER OPERACIONES CON MÁS DE 2 VARIABLES, VUELVA A INTRODUCIR SUS DATOS
                         </div>
                     </p>
                 </div>
@@ -209,8 +207,47 @@
         </span>
     </div>
     <script>
+        async function oliwi(){
+            var datos1 = Array();
+            var datosBD = Array();
+
+            await fetch('http://dc5be9ff7e53.ngrok.io/api/Indicadores/?g_espacio=ESTADO').then(res=> res.json()).then(datos =>{
+                /*Esto es una promesa que agarra lo que viene de la API de una URL y luego al objeto JSON lo almacena 
+                en*/
+                console.log(datos);
+                datos1 = datos
+            });
+            /*fetch es una promesa, javascript sigue trabajando y están los 3 estados, pendiente (then), error y ahuevo }
+            si salió*/
+
+            var prueba = new Array(datos1.length);
+            console.log(prueba);
+            //serie es el nombre del array donde se extrajeron los datos del json que uso para la graficación
+            
+            for(var j=0; j < datos1.length; j++){
+                var i = datos1
+                prueba[j] = [[`${datos1[j].nombre}`, `${datos1[j].fuente}`, `${datos1[j].g_espacio}`, Number.parseFloat(`${datos1[j].indicador_id}`)]];
+            }
+            
+            datosBD=prueba;
+            console.log(datosBD);
+            console.log(datosBD.length);
+
+            let div = '';
+            var idBD = [];
+
+            for (var i=0; i<datosBD.length; i++) {
+                div += "<option value=" + datosBD[i][0][3] + ">" + datosBD[i][0][0] + "</option>" + "</br>";
+                /*todo este codigo me lo copiara hacia mi archivo html y lo guardara en el
+                div que tiene el id BD*/
+                document.getElementById('BD').innerHTML = div;
+            }
+            console.log(div);
+        }
+
         $(window).on("load", function(){
             $("#loader-wrapper").fadeOut("slow");
+            oliwi();
         });
     </script>
     <!-- Loading efect -->
