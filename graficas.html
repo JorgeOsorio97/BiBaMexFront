@@ -216,28 +216,31 @@
     </script>
 </head>
 <body>
-    <div id="navbar-container">
+    <div id="navbar-container"> 
         <div id="navbar">
+            <div id="navbarLogo">
+                <a href="index.html"><img src="img/LOGO.png" alt="Logo BibaMexico" width="100%"></a>
+            </div>
             <div >
                 <div onclick="displayMenuMobile()" id="navbarMiniMenu">
                     <img src="img/menu.svg" alt="menuMobile" width="100%">
                 </div>
                 <div id="navbarMenu">
-                    <a href="index.html" class="menuButton2">
+                    <a href="index.html" class="menuButton2" style="text-decoration: none; height: 100%;">
                         Inicio
                     </a>
-                    <a href="calculadoraGraficadora.html" class="menuButton2">
+                    <a href="calculadoraGraficadora.html" class="menuButton2" style="text-decoration: none; height: 100%;">
                         Calculadora/Graficadora
                     </a>
-                    <a href="heatmap.html" class="menuButton2" >
+                    <a href="heatmap.html" class="menuButton2" style="text-decoration: none; height: 100%;">
                         Heatmap
                     </a>
-                    <a href="graficas2.html" id="menuButton1">
+                    <a href="graficas.html" id="menuButton1" style="text-decoration: none; height: 100%;">
                         Gráficas
                     </a>
                 </div>
+                <!-- Mau es un pinche tonto -->
             </div>
-            
         </div>
     </div>
     <!-- Navbar -->
@@ -258,25 +261,35 @@
                 </select>
                  <!--Como en el checkbox se pueden seleccionar varias opciones, se debe
                 dar un name diferente a cada checkbox-->
-                <input type="checkbox" name="grafica" value="barras"/>
-                <label for="grafica">Gráfica de barras</label>
-    
-                <input type="checkbox" name="grafica" value="linea"/>
-                <label for="grafica">Gráfica de línea</label>
-    
-                <input type="checkbox" name="grafica" value="barraslineas"/>
-                <label for="grafica">Gráfica de barras con líneas</label>
-    
-                <input type="checkbox" name="grafica" value="area"/>
-                <label for="grafica">Gráfica de área</label>
-    
-                <input type="checkbox" name="grafica" value="pie"/>
-                <label for="grafica">Gráfica de pie</label>
-                
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;" value="barras"/>
+                    Gráfica de barras
+                </label>
+
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;" value="linea"/>
+                    Gráfica de línea
+                </label>
+
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;" value="barraslineas"/>
+                    Gráfica de barras con líneas
+                </label>
+
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;" value="area"/>
+                    Gráfica de área
+                </label>
+
+                <label for="barras" style="display: block;">
+                    <input type="radio" name="grafica" style="margin-left: 5%;"  value="pie"/>
+                    Gráfica de pie
+                </label>
+
                 <div class="btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input  type="checkbox" onclick="aldarclic()"> Checked
-                    </label>
+                    <label class="btn btn-secondary active" style="width: 90%; margin: 5%;">
+                        <input type="checkbox" onclick="aldarclic()"> Checked
+                    </label>  
                 </div>
 
                 <script>
@@ -284,8 +297,8 @@
                     {
                         const checkboxes = document.querySelectorAll('input[name="grafica"]:checked');
                         let arreglocharts = [];
-                        checkboxes.forEach((checkbox) => {
-                            arreglocharts.push(checkbox.value);
+                        checkboxes.forEach((radio) => {
+                            arreglocharts.push(radio.value);
                         });
                         traer();
 
@@ -311,23 +324,21 @@
         
     </div>
 
-    <div >
-        <div class="grid-graphs" >
+    <div style="background-color: blue;">
+        <div id="graphCatalogue">
             <!--grafica de barras-->
-            <div class="content box" id="top_x_div" ></div>
+            <div id="top_x_div" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
             <!--grafica de lineas-->
-            <div class="content box" id="line_top_x"></div>
+            <div id="line_top_x" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
             <!--grafica de barras con lineas-->
-            <div class="content box" id="chart_div"></div>
-             <!-- grafica pie-->     
-             <div class="content box" id="piechart"></div>
+            <div id="chart_div" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
             <!-- grafica de area-->    
-            <div class="content" id="chart_div2" ></div>
-           
-            
+            <div id="chart_div2" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
+            <!-- grafica pie-->     
+            <div id="piechart" style="margin-left: 25%; margin-right: 10%; background-color: white; width: 70%; height: 310px;"></div>
         </div>
-
     </div>
+    <!-- Display para las gráficas -->
 
    
         
